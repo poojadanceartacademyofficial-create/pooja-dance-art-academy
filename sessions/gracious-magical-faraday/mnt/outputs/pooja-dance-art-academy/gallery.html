@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — Pooja Dance & Art Academy</title>
+  <meta name="description" content="Explore photos and videos from classes, events, and performances at Pooja Dance & Art Academy, Nagpur.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    .gallery-tabs {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      justify-content: center; margin-bottom: 40px;
+    }
+    .gallery-tab {
+      padding: 9px 22px; border-radius: 50px;
+      border: 2px solid #ddd; background: white;
+      font-family: var(--font-body); font-size: 0.88rem;
+      cursor: pointer; transition: var(--transition); font-weight: 500;
+    }
+    .gallery-tab:hover, .gallery-tab.active {
+      background: var(--purple); color: white; border-color: var(--purple);
+    }
+
+    /* Masonry-style gallery */
+    .gallery-masonry {
+      columns: 3; column-gap: 16px;
+    }
+    .gallery-masonry .gallery-item {
+      break-inside: avoid; margin-bottom: 16px;
+      aspect-ratio: unset; height: auto;
+    }
+    .gallery-masonry .gallery-placeholder {
+      min-height: 200px;
+    }
+    .gallery-masonry .gallery-item:nth-child(3n+1) .gallery-placeholder { min-height: 260px; }
+    .gallery-masonry .gallery-item:nth-child(3n+2) .gallery-placeholder { min-height: 200px; }
+    .gallery-masonry .gallery-item:nth-child(3n)   .gallery-placeholder { min-height: 300px; }
+
+    @media (max-width: 700px) { .gallery-masonry { columns: 2; } }
+    @media (max-width: 400px) { .gallery-masonry { columns: 1; } }
+
+    /* Video section */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .video-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .video-thumb {
+      aspect-ratio: 16/9;
+      background: var(--purple-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; position: relative; cursor: pointer;
+    }
+    .video-thumb .play-btn {
+      position: absolute;
+      width: 56px; height: 56px;
+      background: rgba(106,13,173,0.85);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 1.4rem;
+    }
+    .video-info { padding: 16px; }
+    .video-info h4 { font-size: 0.95rem; margin-bottom: 4px; }
+    .video-info p  { font-size: 0.82rem; color: var(--grey); margin: 0; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">🎭</div>
+      <div class="logo-text">
+        <span>Pooja Dance & Art</span>
+        <span>Academy</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="classes.html">Classes</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="contact.html" class="nav-cta">Enquire Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="classes.html">Classes</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Enquire Now</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1>Gallery</h1>
+  <p>Every photo tells a story of creativity, hard work, and the joy of performance.</p>
+  <div class="breadcrumb"><a href="index.html">Home</a> › Gallery</div>
+</div>
+
+<!-- PHOTO GALLERY -->
+<section class="section-padding">
+  <div class="container">
+    <h2 class="section-title">Photo Gallery</h2>
+    <p class="section-subtitle">Moments from our classes, workshops, events, and performances throughout the year.</p>
+
+    <div class="gallery-tabs">
+      <button class="gallery-tab active">All</button>
+      <button class="gallery-tab">Dance</button>
+      <button class="gallery-tab">Art & Drawing</button>
+      <button class="gallery-tab">Performances</button>
+      <button class="gallery-tab">Events</button>
+      <button class="gallery-tab">Students</button>
+    </div>
+
+    <!-- 📸 HOW TO ADD PHOTOS:
+         Replace each <div class="gallery-placeholder"> block with:
+         <img src="images/your-photo-name.jpg" alt="Description of photo">
+         Save your photos to the /images/ folder first. -->
+    <div class="gallery-masonry">
+      <div class="gallery-item">
+        <div class="gallery-placeholder"><span>🩰</span><span>Dance Class</span></div>
+        <div class="gallery-overlay"><span>Dance Class</span></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder"><span>🎨</span><span>Art Session</span></div>
+        <div class="gallery-overlay"><span>Art Session</span></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder"><span>🎤</span><span>Annual Show</span></div>
+        <div class="gallery-overlay"><span>Annual Show</span></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder"><span>💃</span><span>Performance</span></div>
+        <div class="gallery-overlay"><span>Performance</span></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder"><span>🖌️</span><span>Painting Workshop</span></div>
+        <div class="gallery-overlay"><span>Painting Workshop</span></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder"><span>🎭</span><span>Theatre Act</span></div>
+        <div class="gallery-overlay"><span>Theatre Act</span></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder"><span>🎸</span><span>Music Class</span></div>
+        <div class="gallery-overlay"><span>Music Class</span></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder"><span>🏆</span><span>Award Ceremony</span></div>
+        <div class="gallery-overlay"><span>Award Ceremony</span></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder"><span>✨</span><span>Graduation Show</span></div>
+        <div class="gallery-overlay"><span>Graduation Show</span></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder"><span>💪</span><span>Fitness Session</span></div>
+        <div class="gallery-overlay"><span>Fitness Session</span></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder"><span>🕉️</span><span>Cultural Programme</span></div>
+        <div class="gallery-overlay"><span>Cultural Programme</span></div>
+      </div>
+      <div class="gallery-item">
+        <div class="gallery-placeholder"><span>🎪</span><span>College Event</span></div>
+        <div class="gallery-overlay"><span>College Event</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO SECTION -->
+<section class="section-padding bg-light">
+  <div class="container">
+    <h2 class="section-title">Videos</h2>
+    <p class="section-subtitle">Watch our students perform, learn, and shine on stage.</p>
+
+    <!-- 📹 HOW TO ADD VIDEOS:
+         Replace the video-thumb div content with a YouTube embed:
+         <iframe width="100%" height="100%" src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+           frameborder="0" allowfullscreen style="aspect-ratio:16/9;"></iframe>
+         Or paste your Instagram Reel embed code here. -->
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-thumb">
+          🎬
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="video-info">
+          <h4>Annual Day Performance 2025</h4>
+          <p>📸 Add your YouTube link here</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb">
+          🎬
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="video-info">
+          <h4>Dance Class Highlights</h4>
+          <p>📸 Add your YouTube link here</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb">
+          🎬
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="video-info">
+          <h4>College Fest Performance</h4>
+          <p>📸 Add your YouTube link here</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Instagram CTA -->
+<section style="padding:60px 24px; text-align:center; background:var(--purple-light);">
+  <div class="container">
+    <div style="font-size:2.5rem; margin-bottom:12px;">📸</div>
+    <h2 style="margin-bottom:12px;">Follow Us on Instagram</h2>
+    <p style="margin-bottom:24px; max-width:500px; margin-left:auto; margin-right:auto; color:var(--grey);">
+      See daily moments from classes, performances, and student life. Tag us in your posts!
+    </p>
+    <!-- 🔗 REPLACE # with your actual Instagram profile URL -->
+    <a href="#" class="btn btn-purple" target="_blank">@YourInstagramHandle</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="footer-logo-text">Pooja Dance & Art Academy</span>
+      <p>Nurturing creativity, building confidence, and celebrating the arts.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="classes.html">Classes</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Classes</h4>
+      <a href="classes.html">Dance</a>
+      <a href="classes.html">Fitness</a>
+      <a href="classes.html">Art</a>
+      <a href="classes.html">Music</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="#">📍 Nagpur, Maharashtra</a>
+      <a href="tel:+91XXXXXXXXXX">📞 +91 XXXXX XXXXX</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Pooja Dance & Art Academy. All rights reserved.</span>
+  </div>
+</footer>
+
+<a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float" target="_blank">
+  <div class="whatsapp-tooltip">Chat with us</div>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<script src="js/main.js"></script>
+</body>
+</html>

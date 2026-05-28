@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Admissions — Pooja Dance & Art Academy</title>
+  <meta name="description" content="Enquire about admissions, classes, and fees at Pooja Dance & Art Academy. Contact us by phone, WhatsApp, or visit us in Nagpur.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .map-container {
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 32px;
+      box-shadow: var(--shadow);
+      background: var(--purple-light);
+      min-height: 280px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 12px;
+    }
+    .map-container p { color: var(--purple); font-weight: 600; font-size: 0.9rem; text-align: center; padding: 0 20px; }
+    .faq-item {
+      background: var(--white); border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      margin-bottom: 12px; overflow: hidden;
+    }
+    .faq-question {
+      padding: 18px 20px; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      font-weight: 600; font-size: 0.95rem; color: var(--dark);
+      background: none; border: none; width: 100%; text-align: left;
+      font-family: var(--font-body);
+    }
+    .faq-question:hover { color: var(--purple); }
+    .faq-arrow { transition: transform 0.3s ease; color: var(--purple); font-size: 0.8rem; }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 20px;
+    }
+    .faq-answer p { color: var(--grey); font-size: 0.9rem; padding-bottom: 16px; margin: 0; }
+    .faq-item.open .faq-answer { max-height: 200px; }
+    .faq-item.open .faq-arrow  { transform: rotate(180deg); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">🎭</div>
+      <div class="logo-text">
+        <span>Pooja Dance & Art</span>
+        <span>Academy</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="classes.html">Classes</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="contact.html" class="nav-cta">Enquire Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="classes.html">Classes</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Enquire Now</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1>Contact & Admissions</h1>
+  <p>We'd love to hear from you. Reach out and let's find the perfect class for you.</p>
+  <div class="breadcrumb"><a href="index.html">Home</a> › Contact</div>
+</div>
+
+<!-- HOW TO ENROLL STEPS -->
+<section class="section-padding bg-light">
+  <div class="container">
+    <h2 class="section-title">How to Enroll</h2>
+    <p class="section-subtitle">Four simple steps to begin your creative journey at Pooja Dance & Art Academy.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Enquire</h3>
+        <p>Fill the form below or call/WhatsApp us with your name, the class you're interested in, and your availability.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Free Trial Class</h3>
+        <p>Come in for a free 30-minute trial class. Meet your instructor, see the academy, and feel the energy.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>Register</h3>
+        <p>Complete a simple registration form and pay the admission fee to officially secure your spot.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <h3>Begin!</h3>
+        <p>You're in! Attend your first class and start your creative journey with our welcoming community.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM + INFO -->
+<section class="section-padding">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- LEFT: Contact Info -->
+      <div>
+        <div class="contact-info-card">
+          <h2>Get in Touch</h2>
+          <p>We're happy to answer any questions about classes, fees, schedules, or enrollments.</p>
+
+          <!-- ✏️ REPLACE all placeholder details below with real information -->
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <strong>Our Address</strong>
+              <span>Your Full Academy Address,<br>Nagpur, Maharashtra — XXXXXX</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <strong>Phone / WhatsApp</strong>
+              <span>+91 XXXXX XXXXX</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div>
+              <strong>Email</strong>
+              <span>info@poojadanceacademy.com</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">⏰</div>
+            <div>
+              <strong>Working Hours</strong>
+              <span>Monday – Saturday<br>9:00 AM – 8:00 PM</span>
+            </div>
+          </div>
+
+          <div class="contact-social">
+            <!-- 🔗 REPLACE # with real social URLs -->
+            <a href="#" class="social-btn" title="Instagram">📸</a>
+            <a href="#" class="social-btn" title="Facebook">📘</a>
+            <a href="#" class="social-btn" title="YouTube">▶️</a>
+            <!-- WhatsApp direct -->
+            <a href="https://wa.me/91XXXXXXXXXX" class="social-btn" title="WhatsApp" target="_blank">💬</a>
+          </div>
+        </div>
+
+        <!-- MAP EMBED -->
+        <!-- ✏️ TO ADD GOOGLE MAPS:
+             1. Go to maps.google.com
+             2. Search for your academy address
+             3. Click Share → Embed a map
+             4. Copy the <iframe> code and replace the div below -->
+        <div class="map-container">
+          <span style="font-size:2rem;">📍</span>
+          <p>
+            Replace this box with your Google Maps embed.<br>
+            Go to Google Maps → Share → Embed a map → Copy the iframe code.
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT: Enquiry Form -->
+      <div class="contact-form">
+        <h3>Send Us an Enquiry</h3>
+        <p style="color:var(--grey); font-size:0.9rem; margin-bottom:24px;">
+          Fill in your details and we'll get back to you within 24 hours — usually much sooner on WhatsApp.
+        </p>
+        <form id="enquiryForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone / WhatsApp *</label>
+              <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label for="course">Class Interested In *</label>
+            <select id="course" name="course" required>
+              <option value="">— Select a class —</option>
+              <option>Dance Classes</option>
+              <option>Fitness Sessions (Ladies)</option>
+              <option>Drawing & Painting</option>
+              <option>Acting</option>
+              <option>Singing</option>
+              <option>Musical Instruments</option>
+              <option>Handwriting Improvement</option>
+              <option>Shlok Learning</option>
+              <option>College Event Performance</option>
+              <option>Multiple / Not Sure Yet</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="age">Student's Age (if for a child)</label>
+            <input type="text" id="age" name="age" placeholder="e.g. 8 years">
+          </div>
+          <div class="form-group">
+            <label for="message">Message (Optional)</label>
+            <textarea id="message" name="message" placeholder="Any specific questions or information you'd like to share..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-purple" style="width:100%;">
+            Send via WhatsApp →
+          </button>
+          <p style="font-size:0.78rem; color:var(--grey); text-align:center; margin-top:12px;">
+            Clicking the button will open WhatsApp with your message pre-filled.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="section-padding bg-light">
+  <div class="container">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-subtitle">Quick answers to the questions we hear most often.</p>
+    <div style="max-width:720px; margin:32px auto 0;">
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Is there a free trial class available?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes! We offer a free 30-minute trial class for all new students. It's the best way to experience the academy, meet your instructor, and decide if it's the right fit — with no pressure or commitment.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What is the age requirement for classes?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Most of our classes start from age 5. Specific age groups vary by class — for example, shlok learning is best for ages 5–12, while fitness sessions are designed for ladies of all ages. Contact us and we'll guide you to the right batch.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What are the fees and payment options?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Fees vary by class and duration. Please contact us directly via WhatsApp or phone for the current fee structure. We offer flexible monthly payment options.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Do you offer classes for complete beginners?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Absolutely. All our programmes are structured to welcome complete beginners. You don't need any prior experience — just the willingness to learn and enjoy.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Can you choreograph for our college event?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes! We offer professional choreography and performance direction for college fests and cultural events. Contact us with your event date, team size, and performance requirements and we'll put together a plan for you.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="footer-logo-text">Pooja Dance & Art Academy</span>
+      <p>Nurturing creativity, building confidence, and celebrating the arts — one student at a time.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="classes.html">Classes</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Classes</h4>
+      <a href="classes.html">Dance</a>
+      <a href="classes.html">Fitness</a>
+      <a href="classes.html">Art</a>
+      <a href="classes.html">Music</a>
+      <a href="classes.html">Acting</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="#">📍 Nagpur, Maharashtra</a>
+      <a href="tel:+91XXXXXXXXXX">📞 +91 XXXXX XXXXX</a>
+      <a href="mailto:info@poojadanceacademy.com">✉️ Email Us</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Pooja Dance & Art Academy. All rights reserved.</span>
+    <span>Built with ❤️ for a creative community</span>
+  </div>
+</footer>
+
+<a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float" target="_blank">
+  <div class="whatsapp-tooltip">Chat with us</div>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<script src="js/main.js"></script>
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
