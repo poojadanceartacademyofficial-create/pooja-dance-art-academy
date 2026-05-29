@@ -3,27 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pooja Dance & Art Academy — Where Creativity Comes Alive</title>
-  <meta name="description" content="Pooja Dance & Art Academy offers dance, art, fitness, singing, acting, and more. Enroll your child today and discover the joy of creative learning.">
-  <!-- Google Fonts -->
+  <title>Pooja Dance & Art Academy — Where Creativity Comes Alive | Nagpur</title>
+  <meta name="description" content="Pooja Dance & Art Academy, Nagpur. 25,000+ students trained. Dance, Art, Music, Fitness, Acting & more. Est. 2005. Enroll today — online & offline classes.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;}
+    .fade-in.visible{opacity:1;transform:translateY(0);}
+    /* Hero video overlay */
+    .hero-video-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.18;z-index:0;}
+    .hero-content{position:relative;z-index:1;}
+    /* Google rating badge */
+    .g-rating{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:50px;margin-top:16px;}
+    .g-rating span{color:white;font-size:.82rem;}
+    .g-rating .stars{color:#FBBC04;font-size:.9rem;}
+    /* Trust badges */
+    .trust-bar{background:var(--dark);padding:16px 24px;}
+    .trust-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;}
+    .trust-item{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.8);font-size:.82rem;}
+    .trust-item span:first-child{font-size:1.1rem;}
   </style>
 </head>
 <body>
 
-<!-- ════════════════════════════════════════
-     NAVIGATION
-════════════════════════════════════════ -->
 <nav class="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <div class="logo-icon">🎭</div>
+      <!-- Logo image — shows once logo.png is uploaded to /images/ folder -->
+      <img src="images/logo.png" alt="Pooja Dance & Art Academy" style="height:44px;width:44px;border-radius:50%;object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="logo-icon" style="display:none;">🎭</div>
       <div class="logo-text">
         <span>Pooja Dance & Art</span>
         <span>Academy</span>
@@ -37,357 +47,218 @@
       <li><a href="events.html">Events</a></li>
       <li><a href="contact.html" class="nav-cta">Enquire Now</a></li>
     </ul>
-    <button class="hamburger" id="hamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
   <div class="mobile-nav" id="mobileNav">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="classes.html">Classes</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="events.html">Events</a>
-    <a href="contact.html">Enquire Now</a>
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="classes.html">Classes</a>
+    <a href="gallery.html">Gallery</a><a href="events.html">Events</a><a href="contact.html">Enquire Now</a>
   </div>
 </nav>
 
-<!-- ════════════════════════════════════════
-     HERO
-════════════════════════════════════════ -->
+<!-- HERO -->
 <section class="hero">
+  <!-- Background video — shows once hero-video.mp4 is uploaded to /images/ folder -->
+  <video class="hero-video-bg" autoplay muted loop playsinline>
+    <source src="images/hero-video.mp4" type="video/mp4">
+  </video>
   <div class="hero-content">
     <div class="hero-text">
-      <div class="hero-badge">✨ Nagpur's Premier Creative Academy</div>
+      <div class="hero-badge">✨ Est. 2005 · Nagpur's Premier Creative Academy</div>
       <h1 class="hero-title">Where <em>Creativity</em><br>Comes Alive</h1>
-      <p class="hero-desc">
-        Nurturing talent in dance, art, music, fitness, and culture since our founding.
-        Join a community where every child discovers their creative potential.
-      </p>
+      <p class="hero-desc">Nurturing talent in dance, art, music, fitness, and culture for over 25 years. Join 25,000+ students who found their creative voice at Pooja Dance & Art Academy.</p>
       <div class="hero-buttons">
         <a href="classes.html" class="btn btn-primary">Explore Classes</a>
         <a href="contact.html" class="btn btn-outline">Enquire Now</a>
       </div>
+      <div class="g-rating">
+        <span class="stars">★★★★★</span>
+        <span>4.7 Google Rating &nbsp;|&nbsp; 5-Star on JustDial</span>
+      </div>
       <div class="hero-stats">
-        <div class="hero-stat">
-          <strong><span data-count="500" data-suffix="+">500+</span></strong>
-          <span>Students Trained</span>
-        </div>
-        <div class="hero-stat">
-          <strong><span data-count="9" data-suffix="+">9+</span></strong>
-          <span>Disciplines</span>
-        </div>
-        <div class="hero-stat">
-          <strong><span data-count="100" data-suffix="+">100+</span></strong>
-          <span>Performances</span>
-        </div>
+        <div class="hero-stat"><strong><span data-count="25000" data-suffix="+">25,000+</span></strong><span>Students Trained</span></div>
+        <div class="hero-stat"><strong><span data-count="25" data-suffix="+">25+</span></strong><span>Years of Legacy</span></div>
+        <div class="hero-stat"><strong><span data-count="9">9</span></strong><span>Disciplines</span></div>
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-card">
-        <h4>🩰 Dance & Movement</h4>
-        <p>Classical, Bollywood, Contemporary & Fitness</p>
-      </div>
+      <div class="hero-card"><h4>🩰 Dance & Movement</h4><p>Classical, Bollywood, Contemporary & Fitness</p></div>
       <div class="hero-card-row">
-        <div class="hero-card">
-          <h4>🎨 Visual Arts</h4>
-          <p>Drawing, Painting & more</p>
-        </div>
-        <div class="hero-card">
-          <h4>🎵 Performing Arts</h4>
-          <p>Singing, Acting & Instruments</p>
-        </div>
+        <div class="hero-card"><h4>🎨 Visual Arts</h4><p>Drawing, Painting & more</p></div>
+        <div class="hero-card"><h4>🎵 Performing Arts</h4><p>Singing, Acting & Instruments</p></div>
       </div>
-      <div class="hero-card">
-        <h4>🎓 College Performances</h4>
-        <p>Professional choreography & event support</p>
-      </div>
+      <div class="hero-card"><h4>🌐 Online & Offline</h4><p>Offline in Nagpur · Online globally</p></div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════
-     STATS BAR
-════════════════════════════════════════ -->
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="stat-item">
-      <strong><span data-count="10" data-suffix="+">10+</span></strong>
-      <span>Years of Excellence</span>
-    </div>
-    <div class="stat-item">
-      <strong><span data-count="500" data-suffix="+">500+</span></strong>
-      <span>Students Trained</span>
-    </div>
-    <div class="stat-item">
-      <strong><span data-count="9">9</span></strong>
-      <span>Creative Disciplines</span>
-    </div>
-    <div class="stat-item">
-      <strong><span data-count="100" data-suffix="+">100+</span></strong>
-      <span>Stage Performances</span>
-    </div>
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item"><span>⭐</span><span>4.7★ Google Rating</span></div>
+    <div class="trust-item"><span>🏅</span><span>5-Star JustDial Certified</span></div>
+    <div class="trust-item"><span>🌐</span><span>Online Classes Available Globally</span></div>
+    <div class="trust-item"><span>🎓</span><span>Annual Shows Since 2011</span></div>
+    <div class="trust-item"><span>👩‍🏫</span><span>35+ Years of Expert Teaching</span></div>
   </div>
 </div>
 
-<!-- ════════════════════════════════════════
-     ABOUT SNIPPET
-════════════════════════════════════════ -->
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><strong><span data-count="25" data-suffix="+">25+</span></strong><span>Years of Legacy</span></div>
+    <div class="stat-item"><strong><span data-count="25000" data-suffix="+">25,000+</span></strong><span>Students Trained</span></div>
+    <div class="stat-item"><strong><span data-count="9">9</span></strong><span>Creative Disciplines</span></div>
+    <div class="stat-item"><strong><span data-count="13" data-suffix="+">13+</span></strong><span>Annual Shows Conducted</span></div>
+  </div>
+</div>
+
+<!-- ABOUT SNIPPET -->
 <section class="section-padding">
   <div class="container">
     <div class="about-grid">
       <div class="about-image-box">
-        <!-- 📸 REPLACE: Add a photo of the academy or founder here -->
-        <div style="font-size:5rem; text-align:center;">🎭<br><span style="font-size:1rem; color:#6A0DAD; font-weight:600;">Add Academy Photo Here</span></div>
-        <div class="about-badge">
-          <strong>10+</strong>
-          <span>Years of Legacy</span>
-        </div>
+        <img src="images/academy.jpg" alt="Pooja Dance & Art Academy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div style="font-size:5rem;text-align:center;display:none;">🎭<br><span style="font-size:1rem;color:#6A0DAD;font-weight:600;">Add Academy Photo Here</span></div>
+        <div class="about-badge"><strong>Est.</strong><span>2005</span></div>
       </div>
       <div>
-        <p class="text-purple" style="font-weight:600; font-size:0.9rem; text-transform:uppercase; letter-spacing:.08em; margin-bottom:8px;">About the Academy</p>
-        <h2 style="margin-bottom:16px;">A Decade of Nurturing Creative Souls</h2>
-        <p style="margin-bottom:16px;">
-          Pooja Dance & Art Academy was founded with one simple belief — every child carries
-          a spark of creativity that deserves to be nurtured. Over the years, we have grown
-          into a trusted creative learning home for hundreds of students across Nagpur.
-        </p>
-        <p style="margin-bottom:28px;">
-          Led by our founder with a lifelong passion for the arts, our academy combines
-          traditional discipline with modern methods to create a learning environment
-          that is joyful, purposeful, and deeply enriching.
-        </p>
+        <p class="text-purple" style="font-weight:600;font-size:.9rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">About the Academy</p>
+        <h2 style="margin-bottom:16px;">25 Years of Shaping Creative Lives</h2>
+        <p style="margin-bottom:14px;">Founded in 2005 by Mrs. Pooja Rathi, Pooja Dance & Art Academy has spent over two decades nurturing the artistic talents of more than 25,000 students in Nagpur — and now, through online classes, students across the globe.</p>
+        <p style="margin-bottom:28px;">With 35+ years of teaching experience, our founder brings an unmatched depth of expertise across dance, music, art, and cultural education. The academy has held annual showcase events every year since 2011, and our students continue to win competitions and perform on prestigious stages.</p>
         <a href="about.html" class="btn btn-purple">Read Our Story</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════
-     SERVICES
-════════════════════════════════════════ -->
+<!-- SERVICES -->
 <section class="section-padding bg-light">
   <div class="container">
     <h2 class="section-title">Our Classes & Programmes</h2>
-    <p class="section-subtitle">Nine disciplines under one roof — crafted for kids, ladies, and young adults who want to explore their creative potential.</p>
+    <p class="section-subtitle">Nine disciplines under one roof — available offline in Nagpur and online globally. Morning & Evening batches for your convenience.</p>
     <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">🩰</div>
-        <h3>Dance Classes</h3>
-        <p>Classical, Bollywood, and contemporary dance for all age groups and skill levels.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">💪</div>
-        <h3>Fitness Sessions</h3>
-        <p>Dance-based fitness programmes designed especially for ladies and youth.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🎨</div>
-        <h3>Drawing & Painting</h3>
-        <p>Structured art courses from beginner to advanced, including sketching and canvas painting.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🎭</div>
-        <h3>Acting</h3>
-        <p>Stage and screen acting workshops that build confidence, expression, and stage presence.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🎤</div>
-        <h3>Singing</h3>
-        <p>Vocal training in classical and light music, from beginners to advanced students.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🎸</div>
-        <h3>Musical Instruments</h3>
-        <p>Keyboard, tabla, guitar, and more — learn the language of music.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">✍️</div>
-        <h3>Handwriting Improvement</h3>
-        <p>Calligraphy and penmanship courses for school-age children to develop beautiful writing.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🕉️</div>
-        <h3>Shlok Learning</h3>
-        <p>Sanskrit shlok recitation — a beautiful bridge to cultural heritage and spiritual grounding.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🎪</div>
-        <h3>College Event Performances</h3>
-        <p>Professional choreography, direction, and performance support for college events and fests.</p>
-      </div>
+      <div class="service-card"><div class="service-icon">🩰</div><h3>Dance Classes</h3><p>Classical, Bollywood, and contemporary dance for all age groups and skill levels.</p></div>
+      <div class="service-card"><div class="service-icon">💪</div><h3>Fitness Sessions</h3><p>Dance-based fitness programmes for ladies — energetic, fun, and effective.</p></div>
+      <div class="service-card"><div class="service-icon">🎨</div><h3>Drawing & Painting</h3><p>From basic sketching to advanced canvas painting — structured and creative.</p></div>
+      <div class="service-card"><div class="service-icon">🎭</div><h3>Acting</h3><p>Stage and screen acting workshops that build confidence and expression.</p></div>
+      <div class="service-card"><div class="service-icon">🎤</div><h3>Singing</h3><p>Classical and light music vocal training for beginners to advanced students.</p></div>
+      <div class="service-card"><div class="service-icon">🎸</div><h3>Musical Instruments</h3><p>Keyboard, tabla, guitar, and more — learn the language of music.</p></div>
+      <div class="service-card"><div class="service-icon">✍️</div><h3>Handwriting Improvement</h3><p>Calligraphy and penmanship for school-age children.</p></div>
+      <div class="service-card"><div class="service-icon">🕉️</div><h3>Shlok Learning</h3><p>Sanskrit shlok recitation — cultural heritage for young learners.</p></div>
+      <div class="service-card"><div class="service-icon">🎪</div><h3>College Event Performances</h3><p>Professional choreography and performance support for college events and fests.</p></div>
     </div>
-    <div style="text-align:center; margin-top:40px;">
-      <a href="classes.html" class="btn btn-purple">View All Classes & Fees</a>
-    </div>
+    <div style="text-align:center;margin-top:40px;"><a href="classes.html" class="btn btn-purple">View All Classes & Timings</a></div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════
-     GALLERY PREVIEW
-════════════════════════════════════════ -->
+<!-- GALLERY PREVIEW -->
 <section class="section-padding">
   <div class="container">
     <h2 class="section-title">Life at the Academy</h2>
-    <p class="section-subtitle">A glimpse into the vibrant world of creativity, performances, and learning at Pooja Dance & Art Academy.</p>
+    <p class="section-subtitle">A glimpse into the vibrant world of creativity, performances, and learning.</p>
     <div class="gallery-grid">
-      <!-- 📸 REPLACE each gallery-placeholder with an <img> tag once you have photos -->
-      <div class="gallery-item">
-        <div class="gallery-placeholder"><span>🩰</span><span>Dance Class</span></div>
-        <div class="gallery-overlay"><span>Dance Class</span></div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder"><span>🎨</span><span>Art Session</span></div>
-        <div class="gallery-overlay"><span>Art Session</span></div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder"><span>🎤</span><span>Performance</span></div>
-        <div class="gallery-overlay"><span>Performance</span></div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder"><span>🎭</span><span>Annual Show</span></div>
-        <div class="gallery-overlay"><span>Annual Show</span></div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder"><span>🎸</span><span>Music Class</span></div>
-        <div class="gallery-overlay"><span>Music Class</span></div>
-      </div>
-      <div class="gallery-item">
-        <div class="gallery-placeholder"><span>✍️</span><span>Art Workshop</span></div>
-        <div class="gallery-overlay"><span>Art Workshop</span></div>
-      </div>
+      <div class="gallery-item"><img src="images/gallery-1.jpg" alt="Dance Class" onerror="this.outerHTML='<div class=\'gallery-item\'><div class=\'gallery-placeholder\'><span>🩰</span><span>Dance Class</span></div></div>';"><div class="gallery-overlay"><span>Dance Class</span></div></div>
+      <div class="gallery-item"><img src="images/gallery-2.jpg" alt="Art Session" onerror="this.outerHTML='<div class=\'gallery-item\'><div class=\'gallery-placeholder\'><span>🎨</span><span>Art Session</span></div></div>';"><div class="gallery-overlay"><span>Art Session</span></div></div>
+      <div class="gallery-item"><img src="images/gallery-3.jpg" alt="Annual Show" onerror="this.outerHTML='<div class=\'gallery-item\'><div class=\'gallery-placeholder\'><span>🎤</span><span>Annual Show</span></div></div>';"><div class="gallery-overlay"><span>Annual Show</span></div></div>
+      <div class="gallery-item"><img src="images/gallery-4.jpg" alt="Performance" onerror="this.outerHTML='<div class=\'gallery-item\'><div class=\'gallery-placeholder\'><span>💃</span><span>Performance</span></div></div>';"><div class="gallery-overlay"><span>Performance</span></div></div>
+      <div class="gallery-item"><img src="images/gallery-5.jpg" alt="Competition" onerror="this.outerHTML='<div class=\'gallery-item\'><div class=\'gallery-placeholder\'><span>🏆</span><span>Competition</span></div></div>';"><div class="gallery-overlay"><span>Competition</span></div></div>
+      <div class="gallery-item"><img src="images/gallery-6.jpg" alt="Workshop" onerror="this.outerHTML='<div class=\'gallery-item\'><div class=\'gallery-placeholder\'><span>✨</span><span>Workshop</span></div></div>';"><div class="gallery-overlay"><span>Workshop</span></div></div>
     </div>
-    <div style="text-align:center; margin-top:36px;">
-      <a href="gallery.html" class="btn btn-purple">See Full Gallery</a>
-    </div>
+    <div style="text-align:center;margin-top:36px;"><a href="gallery.html" class="btn btn-purple">See Full Gallery</a></div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════
-     TESTIMONIALS
-════════════════════════════════════════ -->
+<!-- TESTIMONIALS -->
 <section class="section-padding bg-purple-light">
   <div class="container">
-    <h2 class="section-title">What Parents & Students Say</h2>
-    <p class="section-subtitle">Real words from the families who are part of our growing academy community.</p>
+    <h2 class="section-title">What Our Students Say</h2>
+    <p class="section-subtitle" style="margin-bottom:12px;">Rated <strong>4.7★ on Google</strong> and <strong>5-Star on JustDial</strong> by our students and parents.</p>
+    <p class="section-subtitle" style="margin-top:0;">Real words from the families who are part of our community.</p>
     <div class="testimonials-grid">
       <div class="testimonial-card">
         <div class="stars">★★★★★</div>
-        <p class="testimonial-text">
-          "My daughter has been learning Bharatnatyam here for three years. The discipline, love, and personal attention she receives is extraordinary. She has transformed into a confident young performer."
-        </p>
+        <p class="testimonial-text">"Very good dance studio! We learned 4 dances for our Sangeet. Bhagyashree is an excellent teacher!! We had a lot of fun."</p>
         <div class="testimonial-author">
           <div class="author-avatar">P</div>
-          <div class="author-info">
-            <strong>Priya Sharma</strong>
-            <span>Mother of a dance student</span>
-          </div>
+          <div class="author-info"><strong>PT</strong><span>Google Review ·  Verified</span></div>
         </div>
       </div>
       <div class="testimonial-card">
         <div class="stars">★★★★★</div>
-        <p class="testimonial-text">
-          "I joined the fitness dance classes six months ago and I have never felt better. The environment is so welcoming for ladies of all ages. I look forward to every session."
-        </p>
-        <div class="testimonial-author">
-          <div class="author-avatar">A</div>
-          <div class="author-info">
-            <strong>Ankita Deshmukh</strong>
-            <span>Fitness class student</span>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">
-          "The academy helped our college team prepare for the inter-college cultural fest. Their choreography and professionalism was outstanding — we won first place!"
-        </p>
+        <p class="testimonial-text">"Good place to learn dance. Teachers are really trained and cooperate a lot. My child has improved tremendously in just a few months."</p>
         <div class="testimonial-author">
           <div class="author-avatar">R</div>
-          <div class="author-info">
-            <strong>Rohan Kulkarni</strong>
-            <span>College performance student</span>
-          </div>
+          <div class="author-info"><strong>Rashmi Pandit</strong><span>Google Review · Verified</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"This is the super best dance academy. Very good experience. The passion and dedication of the teachers is truly remarkable."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">B</div>
+          <div class="author-info"><strong>Bhavana Nabira</strong><span>Google Review · Verified</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════
-     CTA STRIP
-════════════════════════════════════════ -->
-<section style="background: linear-gradient(135deg, #4A0880 0%, #6A0DAD 100%); padding: 60px 24px; text-align:center;">
+<!-- CTA -->
+<section style="background:linear-gradient(135deg,#4A0880 0%,#6A0DAD 100%);padding:60px 24px;text-align:center;">
   <div class="container">
-    <h2 style="color:white; margin-bottom:12px;">Ready to Begin Your Creative Journey?</h2>
-    <p style="color:rgba(255,255,255,0.8); margin-bottom:32px; max-width:500px; margin-left:auto; margin-right:auto;">
-      Book a free trial class today. No commitments — just come, experience, and feel the difference.
-    </p>
-    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+    <h2 style="color:white;margin-bottom:12px;">Ready to Begin Your Creative Journey?</h2>
+    <p style="color:rgba(255,255,255,.8);margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto;">Book a free trial class today — offline in Nagpur or online from anywhere in the world.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
       <a href="contact.html" class="btn btn-primary">Book a Free Trial</a>
       <a href="classes.html" class="btn btn-outline">View Classes</a>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════
-     FOOTER
-════════════════════════════════════════ -->
+<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-grid">
     <div class="footer-brand">
       <span class="footer-logo-text">Pooja Dance & Art Academy</span>
-      <p>Nurturing creativity, building confidence, and celebrating the arts — one student at a time.</p>
+      <p>Est. 2005 · 25,000+ students trained · Nurturing creativity, building confidence, and celebrating the arts — one student at a time.</p>
       <div class="footer-social">
-        <!-- 🔗 REPLACE # with your actual social media URLs -->
-        <a href="#" title="Instagram">📸</a>
-        <a href="#" title="Facebook">📘</a>
-        <a href="#" title="YouTube">▶️</a>
-        <a href="#" title="WhatsApp">💬</a>
+        <a href="https://www.instagram.com/poojadanceandartoffical_" target="_blank" title="Instagram">📸</a>
+        <a href="https://www.facebook.com/share/1Cdw4PH6pj/" target="_blank" title="Facebook">📘</a>
+        <a href="https://www.youtube.com/@Pooja-Dance-Art-Academy" target="_blank" title="YouTube">▶️</a>
+        <a href="https://wa.me/919373235550" target="_blank" title="WhatsApp">💬</a>
       </div>
     </div>
     <div class="footer-col">
       <h4>Quick Links</h4>
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="classes.html">Classes</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="events.html">Events</a>
-      <a href="contact.html">Contact</a>
+      <a href="index.html">Home</a><a href="about.html">About Us</a><a href="classes.html">Classes</a>
+      <a href="gallery.html">Gallery</a><a href="events.html">Events</a><a href="contact.html">Contact</a>
     </div>
     <div class="footer-col">
       <h4>Our Classes</h4>
-      <a href="classes.html">Dance Classes</a>
-      <a href="classes.html">Fitness Sessions</a>
-      <a href="classes.html">Drawing & Painting</a>
-      <a href="classes.html">Singing</a>
-      <a href="classes.html">Acting</a>
-      <a href="classes.html">Musical Instruments</a>
+      <a href="classes.html">Dance Classes</a><a href="classes.html">Fitness Sessions</a>
+      <a href="classes.html">Drawing & Painting</a><a href="classes.html">Singing</a>
+      <a href="classes.html">Acting</a><a href="classes.html">Musical Instruments</a>
     </div>
     <div class="footer-col">
       <h4>Contact Us</h4>
-      <!-- 📍 REPLACE with actual address, phone, email -->
-      <a href="#">📍 Your Academy Address, Nagpur</a>
-      <a href="tel:+91XXXXXXXXXX">📞 +91 XXXXX XXXXX</a>
-      <a href="mailto:info@poojadanceacademy.com">✉️ info@poojadanceacademy.com</a>
-      <a href="#">⏰ Mon–Sat: 9 AM – 8 PM</a>
+      <a href="https://maps.app.goo.gl/Hpb14Jan4dCLu5x76" target="_blank">📍 Gokulpeth Market, Nagpur 440010</a>
+      <a href="tel:+919373235550">📞 +91 93732 35550</a>
+      <a href="mailto:poojadanceartacademyofficial@gmail.com">✉️ poojadanceartacademyofficial@gmail.com</a>
+      <a href="#">⏰ Mon–Fri: 6AM–1PM & 4PM–9PM</a>
+      <a href="#">⏰ Saturday: 6AM–1PM</a>
     </div>
   </div>
   <div class="footer-bottom">
     <span>© 2026 Pooja Dance & Art Academy. All rights reserved.</span>
-    <span>Built with ❤️ for a creative community</span>
+    <span>Est. 2005 · Nagpur, Maharashtra</span>
   </div>
 </footer>
 
-<!-- WhatsApp Floating Button -->
-<!-- 📞 REPLACE 91XXXXXXXXXX with your WhatsApp number -->
-<a href="https://wa.me/91XXXXXXXXXX?text=Hi! I am interested in enrolling at Pooja Dance %26 Art Academy."
-   class="whatsapp-float" target="_blank" rel="noopener" title="Chat on WhatsApp">
+<a href="https://wa.me/919373235550?text=Hi! I am interested in enrolling at Pooja Dance %26 Art Academy." class="whatsapp-float" target="_blank" rel="noopener">
   <div class="whatsapp-tooltip">Chat with us</div>
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-  </svg>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
 </a>
-
 <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,52 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Classes & Programmes — Pooja Dance & Art Academy</title>
-  <meta name="description" content="Explore all classes at Pooja Dance & Art Academy — dance, art, fitness, singing, acting, instruments, and more. Enroll today.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classes & Programmes — Pooja Dance & Art Academy, Nagpur</title>
+  <meta name="description" content="Explore all classes at Pooja Dance & Art Academy — dance, art, fitness, singing, acting, instruments and more. Morning & Evening batches. Online & Offline.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-    .classes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 28px; }
-    .filter-bar {
-      display: flex; gap: 12px; flex-wrap: wrap;
-      justify-content: center; margin-bottom: 40px;
-    }
-    .filter-btn {
-      padding: 8px 20px; border-radius: 50px; border: 2px solid #ddd;
-      background: white; font-family: var(--font-body); font-size: 0.88rem;
-      cursor: pointer; transition: var(--transition); font-weight: 500;
-    }
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--purple); color: white; border-color: var(--purple);
-    }
-    .college-banner {
-      background: linear-gradient(135deg, var(--dark) 0%, #2d1b4e 100%);
-      border-radius: var(--radius);
-      padding: 48px 40px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-      margin-top: 60px;
-    }
-    .college-banner h2 { color: var(--gold); margin-bottom: 12px; }
-    .college-banner p  { color: rgba(255,255,255,0.8); margin-bottom: 24px; }
-    .college-banner ul { padding: 0; }
-    .college-banner ul li {
-      color: rgba(255,255,255,0.75); font-size: 0.9rem;
-      padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
-      display: flex; align-items: center; gap: 8px;
-    }
-    .college-banner ul li::before { content: '✓'; color: var(--gold); font-weight: 700; }
-    @media (max-width: 700px) {
-      .college-banner { grid-template-columns: 1fr; }
-    }
+    .fade-in{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;}.fade-in.visible{opacity:1;transform:translateY(0);}
+    .classes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px;}
+    .filter-bar{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:40px;}
+    .filter-btn{padding:8px 20px;border-radius:50px;border:2px solid #ddd;background:white;font-family:var(--font-body);font-size:.88rem;cursor:pointer;transition:var(--transition);font-weight:500;}
+    .filter-btn:hover,.filter-btn.active{background:var(--purple);color:white;border-color:var(--purple);}
+    .timing-bar{display:flex;align-items:center;gap:8px;background:var(--purple-light);padding:10px 14px;border-radius:8px;margin-bottom:16px;font-size:.82rem;color:var(--purple);font-weight:600;}
+    .college-banner{background:linear-gradient(135deg,var(--dark) 0%,#2d1b4e 100%);border-radius:var(--radius);padding:48px 40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:60px;}
+    .college-banner h2{color:var(--gold);margin-bottom:12px;}.college-banner p{color:rgba(255,255,255,.8);margin-bottom:24px;}
+    .college-banner ul{padding:0;}.college-banner ul li{color:rgba(255,255,255,.75);font-size:.9rem;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:center;gap:8px;}
+    .college-banner ul li::before{content:'✓';color:var(--gold);font-weight:700;}
+    @media(max-width:700px){.college-banner{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
@@ -54,41 +26,41 @@
 <nav class="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <div class="logo-icon">🎭</div>
-      <div class="logo-text">
-        <span>Pooja Dance & Art</span>
-        <span>Academy</span>
-      </div>
+      <img src="images/logo.png" alt="Logo" style="height:44px;width:44px;border-radius:50%;object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="logo-icon" style="display:none;">🎭</div>
+      <div class="logo-text"><span>Pooja Dance & Art</span><span>Academy</span></div>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="classes.html">Classes</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="events.html">Events</a></li>
-      <li><a href="contact.html" class="nav-cta">Enquire Now</a></li>
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+      <li><a href="classes.html">Classes</a></li><li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li><li><a href="contact.html" class="nav-cta">Enquire Now</a></li>
     </ul>
     <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
   </div>
   <div class="mobile-nav" id="mobileNav">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="classes.html">Classes</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="events.html">Events</a>
-    <a href="contact.html">Enquire Now</a>
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="classes.html">Classes</a>
+    <a href="gallery.html">Gallery</a><a href="events.html">Events</a><a href="contact.html">Enquire Now</a>
   </div>
 </nav>
 
 <div class="page-hero">
   <h1>Classes & Programmes</h1>
-  <p>Nine creative disciplines. One inspiring space. Find the class that sparks your passion.</p>
+  <p>Nine creative disciplines · Morning & Evening batches · Offline in Nagpur & Online globally</p>
   <div class="breadcrumb"><a href="index.html">Home</a> › Classes & Programmes</div>
+</div>
+
+<!-- TIMING BANNER -->
+<div style="background:var(--dark);padding:20px 24px;">
+  <div style="max-width:1160px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;justify-content:center;align-items:center;">
+    <div style="color:rgba(255,255,255,.9);font-size:.88rem;display:flex;align-items:center;gap:8px;"><span style="color:var(--gold);font-size:1rem;">⏰</span><strong style="color:var(--gold);">Mon–Fri Morning:</strong>&nbsp;6:00 AM – 1:00 PM</div>
+    <div style="color:rgba(255,255,255,.9);font-size:.88rem;display:flex;align-items:center;gap:8px;"><span style="color:var(--gold);font-size:1rem;">⏰</span><strong style="color:var(--gold);">Mon–Fri Evening:</strong>&nbsp;4:00 PM – 9:00 PM</div>
+    <div style="color:rgba(255,255,255,.9);font-size:.88rem;display:flex;align-items:center;gap:8px;"><span style="color:var(--gold);font-size:1rem;">⏰</span><strong style="color:var(--gold);">Saturday:</strong>&nbsp;6:00 AM – 1:00 PM (Morning only)</div>
+    <div style="color:rgba(255,255,255,.9);font-size:.88rem;display:flex;align-items:center;gap:8px;"><span style="color:var(--gold);font-size:1rem;">🌐</span><strong style="color:var(--gold);">Online Classes:</strong>&nbsp;Available Globally</div>
+  </div>
 </div>
 
 <section class="section-padding">
   <div class="container">
-
     <div class="filter-bar">
       <button class="filter-btn active">All</button>
       <button class="filter-btn">Dance & Fitness</button>
@@ -98,130 +70,101 @@
     </div>
 
     <div class="classes-grid">
-
-      <!-- Dance Classes -->
       <div class="class-card">
-        <div class="class-image">🩰
-          <span class="class-badge">Most Popular</span>
-        </div>
+        <div class="class-image">🩰<span class="class-badge">Most Popular</span></div>
         <div class="class-body">
           <h3>Dance Classes</h3>
-          <p>A comprehensive dance programme covering classical Indian forms (Bharatnatyam, Kathak), Bollywood, and contemporary styles. For all levels, from complete beginners to advanced performers.</p>
-          <div class="class-meta">
-            <span>👶 Ages 5+</span>
-            <span>👩 All Genders</span>
-            <span>⏰ Enquire for Timings</span>
-          </div>
-          <a href="contact.html" class="btn btn-purple" style="width:100%; text-align:center;">Enquire & Enroll</a>
+          <p>Classical (Bharatnatyam, Kathak), Bollywood, and contemporary dance for all levels. Mrs. Pooja Rathi's signature programme with 35+ years of expertise.</p>
+          <div class="timing-bar">⏰ Morning & Evening Batches · Online Available</div>
+          <div class="class-meta"><span>👶 Ages 5+</span><span>👨‍👩‍👧 All Genders</span></div>
+          <a href="contact.html" class="btn btn-purple" style="width:100%;text-align:center;">Enquire & Enroll</a>
         </div>
       </div>
 
-      <!-- Fitness -->
       <div class="class-card">
         <div class="class-image">💪</div>
         <div class="class-body">
           <h3>Fitness Sessions</h3>
-          <p>Dance-based fitness classes designed for ladies who want to stay active in a fun, motivating environment. Combines aerobics, Zumba-style movement, and toning exercises.</p>
-          <div class="class-meta">
-            <span>👩 Ladies Only</span>
-            <span>🕐 Morning & Evening</span>
-          </div>
-          <a href="contact.html" class="btn btn-purple" style="width:100%; text-align:center;">Enquire & Enroll</a>
+          <p>Dance-based fitness classes designed for ladies — energetic, fun, and effective. Combines aerobics, Zumba-style movement, and toning exercises.</p>
+          <div class="timing-bar">⏰ Morning & Evening Batches</div>
+          <div class="class-meta"><span>👩 Ladies Only</span><span>🏋️ All Fitness Levels</span></div>
+          <a href="contact.html" class="btn btn-purple" style="width:100%;text-align:center;">Enquire & Enroll</a>
         </div>
       </div>
 
-      <!-- Drawing & Painting -->
       <div class="class-card">
         <div class="class-image">🎨</div>
         <div class="class-body">
           <h3>Drawing & Painting</h3>
-          <p>Structured art education from basic sketching to advanced canvas painting. Students learn composition, colour theory, and multiple art styles through guided, project-based learning.</p>
-          <div class="class-meta">
-            <span>👶 Ages 5+</span>
-            <span>📈 Beginner to Advanced</span>
-          </div>
-          <a href="contact.html" class="btn btn-purple" style="width:100%; text-align:center;">Enquire & Enroll</a>
+          <p>Structured art education from basic sketching to advanced canvas painting. Students learn composition, colour theory, and multiple art styles.</p>
+          <div class="timing-bar">⏰ Morning & Evening Batches · Online Available</div>
+          <div class="class-meta"><span>👶 Ages 5+</span><span>📈 Beginner to Advanced</span></div>
+          <a href="contact.html" class="btn btn-purple" style="width:100%;text-align:center;">Enquire & Enroll</a>
         </div>
       </div>
 
-      <!-- Acting -->
       <div class="class-card">
         <div class="class-image">🎭</div>
         <div class="class-body">
           <h3>Acting</h3>
-          <p>Build confidence, expressive communication, and stage presence through acting workshops. Covers script reading, character development, improvisation, and stage performance.</p>
-          <div class="class-meta">
-            <span>👶 Ages 8+</span>
-            <span>🎪 Stage & Screen</span>
-          </div>
-          <a href="contact.html" class="btn btn-purple" style="width:100%; text-align:center;">Enquire & Enroll</a>
+          <p>Build confidence, expression, and stage presence through workshops covering script reading, character development, and performance skills.</p>
+          <div class="timing-bar">⏰ Morning & Evening Batches</div>
+          <div class="class-meta"><span>👶 Ages 8+</span><span>🎪 Stage & Screen</span></div>
+          <a href="contact.html" class="btn btn-purple" style="width:100%;text-align:center;">Enquire & Enroll</a>
         </div>
       </div>
 
-      <!-- Singing -->
       <div class="class-card">
         <div class="class-image">🎤</div>
         <div class="class-body">
           <h3>Singing</h3>
-          <p>Vocal training in both classical and light music. Students are taught riyaaz, ragas, and modern song presentation — building technical ability and stage confidence.</p>
-          <div class="class-meta">
-            <span>👶 Ages 6+</span>
-            <span>🎵 Classical & Light Music</span>
-          </div>
-          <a href="contact.html" class="btn btn-purple" style="width:100%; text-align:center;">Enquire & Enroll</a>
+          <p>Vocal training in classical and light music — riyaaz, ragas, and modern song presentation. Building technical ability and stage confidence.</p>
+          <div class="timing-bar">⏰ Morning & Evening Batches · Online Available</div>
+          <div class="class-meta"><span>👶 Ages 6+</span><span>🎵 Classical & Light Music</span></div>
+          <a href="contact.html" class="btn btn-purple" style="width:100%;text-align:center;">Enquire & Enroll</a>
         </div>
       </div>
 
-      <!-- Musical Instruments -->
       <div class="class-card">
         <div class="class-image">🎸</div>
         <div class="class-body">
           <h3>Musical Instruments</h3>
-          <p>Learn keyboard, tabla, guitar, and other instruments from experienced instructors. Structured curriculum that takes students from first notes to full compositions.</p>
-          <div class="class-meta">
-            <span>👶 Ages 6+</span>
-            <span>🎹 Multiple Instruments</span>
-          </div>
-          <a href="contact.html" class="btn btn-purple" style="width:100%; text-align:center;">Enquire & Enroll</a>
+          <p>Learn keyboard, tabla, guitar, and more. Structured curriculum from first notes to full compositions under expert guidance.</p>
+          <div class="timing-bar">⏰ Morning & Evening Batches</div>
+          <div class="class-meta"><span>👶 Ages 6+</span><span>🎹 Multiple Instruments</span></div>
+          <a href="contact.html" class="btn btn-purple" style="width:100%;text-align:center;">Enquire & Enroll</a>
         </div>
       </div>
 
-      <!-- Handwriting -->
       <div class="class-card">
         <div class="class-image">✍️</div>
         <div class="class-body">
           <h3>Handwriting Improvement</h3>
-          <p>Targeted calligraphy and penmanship courses for school-age children. Improves letter formation, speed, and presentation — skills that benefit academic performance.</p>
-          <div class="class-meta">
-            <span>👶 Ages 5–15</span>
-            <span>📚 School Students</span>
-          </div>
-          <a href="contact.html" class="btn btn-purple" style="width:100%; text-align:center;">Enquire & Enroll</a>
+          <p>Calligraphy and penmanship for school-age children — improves letter formation, speed, and presentation to benefit academic performance.</p>
+          <div class="timing-bar">⏰ Morning Batch · Saturday Available</div>
+          <div class="class-meta"><span>👶 Ages 5–15</span><span>📚 School Students</span></div>
+          <a href="contact.html" class="btn btn-purple" style="width:100%;text-align:center;">Enquire & Enroll</a>
         </div>
       </div>
 
-      <!-- Shlok Learning -->
       <div class="class-card">
         <div class="class-image">🕉️</div>
         <div class="class-body">
           <h3>Shlok Learning</h3>
-          <p>Sanskrit shlok recitation for children — connecting young learners to India's spiritual and cultural heritage through memorization, pronunciation, and understanding of meaning.</p>
-          <div class="class-meta">
-            <span>👶 Ages 5–12</span>
-            <span>🙏 Cultural Heritage</span>
-          </div>
-          <a href="contact.html" class="btn btn-purple" style="width:100%; text-align:center;">Enquire & Enroll</a>
+          <p>Sanskrit shlok recitation — connecting young learners to India's spiritual and cultural heritage through pronunciation, memorization, and meaning.</p>
+          <div class="timing-bar">⏰ Morning Batch · Saturday Available</div>
+          <div class="class-meta"><span>👶 Ages 5–12</span><span>🙏 Cultural Heritage</span></div>
+          <a href="contact.html" class="btn btn-purple" style="width:100%;text-align:center;">Enquire & Enroll</a>
         </div>
       </div>
-
     </div>
 
     <!-- College Events Banner -->
     <div class="college-banner">
       <div>
-        <p style="color:var(--gold); font-weight:600; font-size:0.85rem; text-transform:uppercase; letter-spacing:.08em; margin-bottom:8px;">Special Programme</p>
+        <p style="color:var(--gold);font-weight:600;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Special Programme</p>
         <h2>College Event Performances</h2>
-        <p>Are you a college student or organizer looking for professional choreography and performance support for your fest or cultural event? We've got you.</p>
+        <p>Looking for professional choreography and performance direction for your college fest? Our expert team has delivered outstanding results for college events across Nagpur.</p>
         <a href="contact.html" class="btn btn-primary">Collaborate With Us</a>
       </div>
       <div>
@@ -235,59 +178,28 @@
         </ul>
       </div>
     </div>
-
   </div>
 </section>
 
 <!-- CTA -->
-<section style="background:var(--purple-light); padding:60px 24px; text-align:center;">
+<section style="background:var(--purple-light);padding:60px 24px;text-align:center;">
   <div class="container">
     <h2 style="margin-bottom:12px;">Not Sure Which Class to Start With?</h2>
-    <p style="margin-bottom:28px; max-width:520px; margin-left:auto; margin-right:auto;">
-      Book a free 30-minute visit to the academy. Meet the instructor, watch a class, and find the perfect fit — no pressure, no commitment.
-    </p>
-    <a href="contact.html" class="btn btn-purple">Book a Free Visit</a>
+    <p style="margin-bottom:28px;max-width:520px;margin-left:auto;margin-right:auto;">Book a free trial class — offline in Nagpur or an online demo session. No commitment, just come and experience.</p>
+    <a href="contact.html" class="btn btn-purple">Book a Free Trial</a>
   </div>
 </section>
 
 <footer class="footer">
   <div class="footer-grid">
-    <div class="footer-brand">
-      <span class="footer-logo-text">Pooja Dance & Art Academy</span>
-      <p>Nurturing creativity, building confidence, and celebrating the arts.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Quick Links</h4>
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="classes.html">Classes</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="contact.html">Contact</a>
-    </div>
-    <div class="footer-col">
-      <h4>Classes</h4>
-      <a href="classes.html">Dance</a>
-      <a href="classes.html">Fitness</a>
-      <a href="classes.html">Art</a>
-      <a href="classes.html">Music</a>
-      <a href="classes.html">Acting</a>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <a href="#">📍 Nagpur, Maharashtra</a>
-      <a href="tel:+91XXXXXXXXXX">📞 +91 XXXXX XXXXX</a>
-    </div>
+    <div class="footer-brand"><span class="footer-logo-text">Pooja Dance & Art Academy</span><p>Est. 2005 · 25,000+ students trained · Nurturing creativity, building confidence, and celebrating the arts.</p><div class="footer-social"><a href="https://www.instagram.com/poojadanceandartoffical_" target="_blank">📸</a><a href="https://www.facebook.com/share/1Cdw4PH6pj/" target="_blank">📘</a><a href="https://www.youtube.com/@Pooja-Dance-Art-Academy" target="_blank">▶️</a><a href="https://wa.me/919373235550" target="_blank">💬</a></div></div>
+    <div class="footer-col"><h4>Quick Links</h4><a href="index.html">Home</a><a href="about.html">About Us</a><a href="classes.html">Classes</a><a href="gallery.html">Gallery</a><a href="events.html">Events</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><h4>Our Classes</h4><a href="classes.html">Dance Classes</a><a href="classes.html">Fitness Sessions</a><a href="classes.html">Drawing & Painting</a><a href="classes.html">Singing & Music</a><a href="classes.html">Acting</a></div>
+    <div class="footer-col"><h4>Contact Us</h4><a href="https://maps.app.goo.gl/Hpb14Jan4dCLu5x76" target="_blank">📍 Gokulpeth Market, Nagpur 440010</a><a href="tel:+919373235550">📞 +91 93732 35550</a><a href="mailto:poojadanceartacademyofficial@gmail.com">✉️ Email Us</a><a href="#">⏰ Mon–Fri: 6AM–1PM &amp; 4PM–9PM</a></div>
   </div>
-  <div class="footer-bottom">
-    <span>© 2026 Pooja Dance & Art Academy. All rights reserved.</span>
-  </div>
+  <div class="footer-bottom"><span>© 2026 Pooja Dance & Art Academy. All rights reserved.</span><span>Est. 2005 · Nagpur, Maharashtra</span></div>
 </footer>
-
-<a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float" target="_blank">
-  <div class="whatsapp-tooltip">Chat with us</div>
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-</a>
-
+<a href="https://wa.me/919373235550" class="whatsapp-float" target="_blank"><div class="whatsapp-tooltip">Chat with us</div><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
 <script src="js/main.js"></script>
 </body>
 </html>

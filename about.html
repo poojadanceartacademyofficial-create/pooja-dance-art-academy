@@ -1,148 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us — Pooja Dance & Art Academy</title>
-  <meta name="description" content="Learn about the story, founder, and values behind Pooja Dance & Art Academy — Nagpur's trusted creative learning home.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Pooja Dance & Art Academy | Est. 2005, Nagpur</title>
+  <meta name="description" content="Meet Mrs. Pooja Rathi — founder with 35+ years of experience. Pooja Dance & Art Academy, Est. 2005, has trained 25,000+ students in Nagpur and online.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-    .milestone-list { list-style: none; padding: 0; }
-    .milestone-list li {
-      display: flex; align-items: flex-start; gap: 16px;
-      padding: 16px 0; border-bottom: 1px solid #eee;
-    }
-    .milestone-list li:last-child { border-bottom: none; }
-    .milestone-year {
-      min-width: 60px; font-family: var(--font-head);
-      font-size: 1.1rem; font-weight: 700; color: var(--purple);
-    }
-    .milestone-list p { margin: 0; font-size: 0.95rem; color: var(--grey); }
-    .founder-quote {
-      background: var(--purple);
-      border-radius: var(--radius);
-      padding: 36px 40px;
-      position: relative;
-      margin: 40px 0;
-    }
-    .founder-quote::before {
-      content: '\201C';
-      font-family: var(--font-head);
-      font-size: 6rem;
-      color: rgba(255,255,255,0.15);
-      position: absolute;
-      top: -10px; left: 20px;
-      line-height: 1;
-    }
-    .founder-quote p { color: rgba(255,255,255,0.9); font-size: 1.05rem; font-style: italic; margin-bottom: 16px; }
-    .founder-quote span { color: var(--gold); font-weight: 600; font-size: 0.9rem; }
+    .fade-in{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;}.fade-in.visible{opacity:1;transform:translateY(0);}
+    .milestone-list{list-style:none;padding:0;}
+    .milestone-list li{display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-bottom:1px solid #eee;}
+    .milestone-list li:last-child{border-bottom:none;}
+    .milestone-year{min-width:60px;font-family:var(--font-head);font-size:1.1rem;font-weight:700;color:var(--purple);}
+    .milestone-list p{margin:0;font-size:.95rem;color:var(--grey);}
+    .founder-quote{background:var(--purple);border-radius:var(--radius);padding:36px 40px;position:relative;margin:40px 0;}
+    .founder-quote::before{content:'\201C';font-family:var(--font-head);font-size:6rem;color:rgba(255,255,255,.15);position:absolute;top:-10px;left:20px;line-height:1;}
+    .founder-quote p{color:rgba(255,255,255,.9);font-size:1.05rem;font-style:italic;margin-bottom:16px;}
+    .founder-quote span{color:var(--gold);font-weight:600;font-size:.9rem;}
+    .credential-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:24px;}
+    .credential-box{background:var(--purple);border-radius:var(--radius);padding:20px;text-align:center;}
+    .credential-box strong{display:block;font-family:var(--font-head);font-size:1.8rem;color:var(--gold);}
+    .credential-box span{font-size:.78rem;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:.05em;}
   </style>
 </head>
 <body>
 
-<!-- NAVIGATION -->
 <nav class="navbar">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
-      <div class="logo-icon">🎭</div>
-      <div class="logo-text">
-        <span>Pooja Dance & Art</span>
-        <span>Academy</span>
-      </div>
+      <img src="images/logo.png" alt="Logo" style="height:44px;width:44px;border-radius:50%;object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="logo-icon" style="display:none;">🎭</div>
+      <div class="logo-text"><span>Pooja Dance & Art</span><span>Academy</span></div>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="classes.html">Classes</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="events.html">Events</a></li>
-      <li><a href="contact.html" class="nav-cta">Enquire Now</a></li>
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+      <li><a href="classes.html">Classes</a></li><li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li><li><a href="contact.html" class="nav-cta">Enquire Now</a></li>
     </ul>
     <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
   </div>
   <div class="mobile-nav" id="mobileNav">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="classes.html">Classes</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="events.html">Events</a>
-    <a href="contact.html">Enquire Now</a>
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="classes.html">Classes</a>
+    <a href="gallery.html">Gallery</a><a href="events.html">Events</a><a href="contact.html">Enquire Now</a>
   </div>
 </nav>
 
-<!-- PAGE HERO -->
 <div class="page-hero">
   <h1>Our Story</h1>
-  <p>A decade of creativity, passion, and transforming lives through the arts.</p>
-  <div class="breadcrumb">
-    <a href="index.html">Home</a> › About Us
+  <p>25 years of creativity, passion, and transforming lives through the arts.</p>
+  <div class="breadcrumb"><a href="index.html">Home</a> › About Us</div>
+</div>
+
+<!-- CREDENTIALS BAR -->
+<div style="background:var(--dark);padding:28px 24px;">
+  <div style="max-width:1160px;margin:0 auto;" class="credential-grid">
+    <div class="credential-box"><strong>25,000+</strong><span>Students Trained</span></div>
+    <div class="credential-box"><strong>35+</strong><span>Years of Teaching</span></div>
+    <div class="credential-box"><strong>25+</strong><span>Years of Legacy</span></div>
+    <div class="credential-box"><strong>4.7 ★</strong><span>Google Rating</span></div>
+    <div class="credential-box"><strong>5 ★</strong><span>JustDial Certified</span></div>
   </div>
 </div>
 
-<!-- FOUNDER SECTION -->
+<!-- FOUNDER -->
 <section class="section-padding">
   <div class="container">
     <div class="about-grid">
       <div class="about-image-box">
-        <!-- 📸 REPLACE: Add founder's photo here -->
-        <div style="text-align:center; padding:40px;">
-          <div style="font-size:6rem; margin-bottom:16px;">👩‍🎨</div>
-          <p style="color:var(--purple); font-weight:600;">Add Founder Photo Here</p>
-        </div>
-        <div class="about-badge">
-          <strong>10+</strong>
-          <span>Years of Legacy</span>
-        </div>
+        <img src="images/founder.jpg" alt="Mrs. Pooja Rathi — Founder" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div style="text-align:center;padding:40px;display:none;"><div style="font-size:6rem;margin-bottom:16px;">👩‍🎨</div><p style="color:var(--purple);font-weight:600;">Add Founder Photo Here<br>(save as images/founder.jpg)</p></div>
+        <div class="about-badge"><strong>35+</strong><span>Years of Teaching</span></div>
       </div>
       <div>
-        <p class="text-purple" style="font-weight:600; font-size:0.9rem; text-transform:uppercase; letter-spacing:.08em; margin-bottom:8px;">Meet the Founder</p>
-        <!-- ✏️ REPLACE with actual founder's name and bio -->
-        <h2 style="margin-bottom:16px;">Pooja [Surname]</h2>
-        <p style="margin-bottom:14px;">
-          [Write 2–3 sentences about the founder's background — where she trained, her qualifications,
-          how many years of experience she has, and any notable achievements or certifications.]
-        </p>
-        <p style="margin-bottom:14px;">
-          [Add a personal touch — why she started the academy, what drives her passion for teaching,
-          and what makes her approach to teaching unique.]
-        </p>
-        <p style="margin-bottom:28px;">
-          [Mention any notable performances, collaborations, or recognition she has received
-          over the years.]
-        </p>
+        <p class="text-purple" style="font-weight:600;font-size:.9rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Meet the Founder</p>
+        <h2 style="margin-bottom:16px;">Mrs. Pooja Rathi</h2>
+        <p style="margin-bottom:14px;">Mrs. Pooja Rathi is the visionary founder and principal instructor of Pooja Dance & Art Academy. With over 35 years of dedicated teaching experience and a lifelong passion for the performing and visual arts, she has shaped the creative journeys of more than 25,000 students across Nagpur — and today, through online classes, students across the globe.</p>
+        <p style="margin-bottom:14px;">She founded the academy in 2005 with a single, powerful belief: that every child carries a unique creative spark that deserves to be nurtured with discipline, love, and genuine expertise. Under her leadership, the academy has grown from a small local studio into one of Nagpur's most trusted and celebrated creative learning institutions.</p>
+        <p style="margin-bottom:28px;">Beyond teaching, Mrs. Rathi has built a team of certified, skilled instructors who share her commitment to quality — ensuring every student, regardless of age or experience level, receives the personal attention they deserve.</p>
         <div class="values-grid">
-          <div class="value-item">
-            <div class="value-icon">🎯</div>
-            <div>
-              <h4>Expert-Led</h4>
-              <p>Trained, experienced, and certified instructors</p>
-            </div>
-          </div>
-          <div class="value-item">
-            <div class="value-icon">💛</div>
-            <div>
-              <h4>Student-First</h4>
-              <p>Personal attention and individual growth</p>
-            </div>
-          </div>
+          <div class="value-item"><div class="value-icon">🎯</div><div><h4>Expert-Led</h4><p>35+ years of master-level teaching</p></div></div>
+          <div class="value-item"><div class="value-icon">💛</div><div><h4>Student-First</h4><p>25,000+ success stories and counting</p></div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOUNDER QUOTE -->
-<section style="padding: 0 24px 60px;">
+<section style="padding:0 24px 60px;">
   <div class="container">
     <div class="founder-quote">
-      <!-- ✏️ REPLACE with an actual quote from the founder -->
-      <p>"Every student who walks through our doors carries a unique gift. My purpose is to help them discover it, nurture it, and share it with the world. At Pooja Dance & Art Academy, we don't just teach — we transform."</p>
-      <span>— Pooja [Surname], Founder</span>
+      <p>"Every student who walks through our doors carries a unique gift. My purpose — and my greatest joy — is to help them discover it, nurture it, and share it with the world. At Pooja Dance & Art Academy, we don't just teach a skill. We build a person."</p>
+      <span>— Mrs. Pooja Rathi, Founder & Principal Instructor</span>
     </div>
   </div>
 </section>
@@ -151,28 +100,12 @@
 <section class="section-padding bg-light">
   <div class="container">
     <h2 class="section-title">Our Values</h2>
-    <p class="section-subtitle">The principles that guide every class, every performance, and every student interaction at our academy.</p>
-    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap:24px; margin-top:16px;">
-      <div class="service-card">
-        <div class="service-icon">🌟</div>
-        <h3>Excellence</h3>
-        <p>We set high standards — in training, performance, and character — and help every student reach them.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🌱</div>
-        <h3>Growth</h3>
-        <p>Every student progresses at their own pace, celebrated for their unique journey.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🤝</div>
-        <h3>Community</h3>
-        <p>We are a family. The academy is a safe, inclusive, and supportive space for all.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🏛️</div>
-        <h3>Cultural Roots</h3>
-        <p>We celebrate India's rich artistic heritage while embracing modern forms and expressions.</p>
-      </div>
+    <p class="section-subtitle">The principles that guide every class, every performance, and every student interaction.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px;margin-top:16px;">
+      <div class="service-card"><div class="service-icon">🌟</div><h3>Excellence</h3><p>High standards in training, performance, and character — every single day.</p></div>
+      <div class="service-card"><div class="service-icon">🌱</div><h3>Growth</h3><p>Every student progresses at their own pace, celebrated for their unique journey.</p></div>
+      <div class="service-card"><div class="service-icon">🤝</div><h3>Community</h3><p>A safe, inclusive, and deeply supportive family — online and offline.</p></div>
+      <div class="service-card"><div class="service-icon">🏛️</div><h3>Cultural Roots</h3><p>Celebrating India's rich artistic heritage while embracing modern creative forms.</p></div>
     </div>
   </div>
 </section>
@@ -180,90 +113,51 @@
 <!-- MILESTONES -->
 <section class="section-padding">
   <div class="container">
-    <div style="max-width:700px; margin:0 auto;">
+    <div style="max-width:700px;margin:0 auto;">
       <h2 class="section-title">Our Journey</h2>
-      <p class="section-subtitle">Key milestones that have shaped Pooja Dance & Art Academy into what it is today.</p>
-      <!-- ✏️ REPLACE with real milestones and years -->
+      <p class="section-subtitle">Key milestones that have defined two decades of creative excellence.</p>
       <ul class="milestone-list" style="margin-top:32px;">
-        <li>
-          <span class="milestone-year">20XX</span>
-          <p>Academy founded with the first batch of dance students. Began with classical dance and quickly expanded to arts.</p>
-        </li>
-        <li>
-          <span class="milestone-year">20XX</span>
-          <p>Expanded to include singing, acting, and musical instruments. First Annual Show performed to a packed audience.</p>
-        </li>
-        <li>
-          <span class="milestone-year">20XX</span>
-          <p>Crossed 200 enrolled students. Introduced fitness sessions for ladies and shlok learning for children.</p>
-        </li>
-        <li>
-          <span class="milestone-year">20XX</span>
-          <p>Began college event collaborations — providing choreography and performance support for college fests.</p>
-        </li>
-        <li>
-          <span class="milestone-year">20XX</span>
-          <p>500+ students trained. Launched handwriting improvement and expanded to 9 creative disciplines.</p>
-        </li>
-        <li>
-          <span class="milestone-year">2026</span>
-          <p>Launching official website and digital presence to serve the growing community of students across Nagpur.</p>
-        </li>
+        <li><span class="milestone-year">2005</span><p>Pooja Dance & Art Academy founded by Mrs. Pooja Rathi in Nagpur, Maharashtra. First batch of dance students begins their journey.</p></li>
+        <li><span class="milestone-year">2011</span><p>First Annual Dance Showcase organized — a tradition of excellence that continues every single year to this day.</p></li>
+        <li><span class="milestone-year">2015</span><p>Expanded to include multiple creative disciplines — art, singing, acting, musical instruments, and more. A true creative hub established.</p></li>
+        <li><span class="milestone-year">2018</span><p>Crossed 9 creative disciplines under one roof. Students begin winning regional and city-level dance competitions consistently.</p></li>
+        <li><span class="milestone-year">2020</span><p>Launched online classes — bringing the academy's expertise to students across India and globally, uninterrupted.</p></li>
+        <li><span class="milestone-year">2024</span><p>25,000+ students trained milestone reached. Achieved 4.7★ on Google and 5-Star certification on JustDial — a testament to quality.</p></li>
+        <li><span class="milestone-year">2026</span><p>Official website launched. Academy expands its digital presence, reaching students across the globe through online classes.</p></li>
       </ul>
     </div>
   </div>
 </section>
 
+<!-- FACULTY NOTE -->
+<section class="section-padding bg-purple-light">
+  <div class="container" style="text-align:center;max-width:700px;margin:0 auto;">
+    <h2 style="margin-bottom:16px;">Expert Faculty Team</h2>
+    <p style="margin-bottom:20px;">Mrs. Pooja Rathi leads the academy as founder and principal instructor. She is supported by a team of certified, experienced teachers — each a specialist in their discipline — ensuring every student receives individual attention and expert guidance.</p>
+    <a href="contact.html" class="btn btn-purple">Meet Us in Person — Book a Visit</a>
+  </div>
+</section>
+
 <!-- CTA -->
-<section style="background: linear-gradient(135deg, #4A0880 0%, #6A0DAD 100%); padding:60px 24px; text-align:center;">
+<section style="background:linear-gradient(135deg,#4A0880 0%,#6A0DAD 100%);padding:60px 24px;text-align:center;">
   <div class="container">
-    <h2 style="color:white; margin-bottom:12px;">Become Part of Our Story</h2>
-    <p style="color:rgba(255,255,255,0.8); margin-bottom:32px;">Join hundreds of students who have found their creative voice at Pooja Dance & Art Academy.</p>
+    <h2 style="color:white;margin-bottom:12px;">Become Part of Our 25-Year Legacy</h2>
+    <p style="color:rgba(255,255,255,.8);margin-bottom:32px;">Join 25,000+ students who found their creative voice at Pooja Dance & Art Academy.</p>
     <a href="contact.html" class="btn btn-primary">Enroll Today</a>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-grid">
-    <div class="footer-brand">
-      <span class="footer-logo-text">Pooja Dance & Art Academy</span>
-      <p>Nurturing creativity, building confidence, and celebrating the arts — one student at a time.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Quick Links</h4>
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="classes.html">Classes</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="events.html">Events</a>
-      <a href="contact.html">Contact</a>
-    </div>
-    <div class="footer-col">
-      <h4>Our Classes</h4>
-      <a href="classes.html">Dance Classes</a>
-      <a href="classes.html">Fitness Sessions</a>
-      <a href="classes.html">Drawing & Painting</a>
-      <a href="classes.html">Singing & Music</a>
-      <a href="classes.html">Acting</a>
-    </div>
-    <div class="footer-col">
-      <h4>Contact Us</h4>
-      <a href="#">📍 Your Address, Nagpur</a>
-      <a href="tel:+91XXXXXXXXXX">📞 +91 XXXXX XXXXX</a>
-      <a href="mailto:info@poojadanceacademy.com">✉️ Email Us</a>
-    </div>
+    <div class="footer-brand"><span class="footer-logo-text">Pooja Dance & Art Academy</span><p>Est. 2005 · 25,000+ students trained · Nurturing creativity, building confidence, and celebrating the arts.</p><div class="footer-social"><a href="https://www.instagram.com/poojadanceandartoffical_" target="_blank">📸</a><a href="https://www.facebook.com/share/1Cdw4PH6pj/" target="_blank">📘</a><a href="https://www.youtube.com/@Pooja-Dance-Art-Academy" target="_blank">▶️</a><a href="https://wa.me/919373235550" target="_blank">💬</a></div></div>
+    <div class="footer-col"><h4>Quick Links</h4><a href="index.html">Home</a><a href="about.html">About Us</a><a href="classes.html">Classes</a><a href="gallery.html">Gallery</a><a href="events.html">Events</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><h4>Our Classes</h4><a href="classes.html">Dance Classes</a><a href="classes.html">Fitness Sessions</a><a href="classes.html">Drawing & Painting</a><a href="classes.html">Singing & Music</a><a href="classes.html">Acting</a></div>
+    <div class="footer-col"><h4>Contact Us</h4><a href="https://maps.app.goo.gl/Hpb14Jan4dCLu5x76" target="_blank">📍 Gokulpeth Market, Nagpur 440010</a><a href="tel:+919373235550">📞 +91 93732 35550</a><a href="mailto:poojadanceartacademyofficial@gmail.com">✉️ Email Us</a></div>
   </div>
-  <div class="footer-bottom">
-    <span>© 2026 Pooja Dance & Art Academy. All rights reserved.</span>
-  </div>
+  <div class="footer-bottom"><span>© 2026 Pooja Dance & Art Academy. All rights reserved.</span><span>Est. 2005 · Nagpur, Maharashtra</span></div>
 </footer>
 
-<a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float" target="_blank">
-  <div class="whatsapp-tooltip">Chat with us</div>
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-</a>
-
+<a href="https://wa.me/919373235550" class="whatsapp-float" target="_blank"><div class="whatsapp-tooltip">Chat with us</div><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
 <script src="js/main.js"></script>
 </body>
 </html>
