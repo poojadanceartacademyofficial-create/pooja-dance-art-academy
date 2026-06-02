@@ -1,180 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Classes & Programmes — Pooja Dance & Art Academy, Nagpur</title>
-  <meta name="description" content="Explore all classes at Pooja Dance & Art Academy — dance, art, fitness, singing, acting, instruments and more. Morning & Evening batches. Online & Offline.">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classes & Schedule — Pooja Dance & Art Academy, Nagpur</title>
+  <meta name="description" content="Full class schedule at Pooja Dance & Art Academy — dance, art, fitness, singing, acting, keyboard, handwriting. Morning, Evening, Saturday & Sunday batches.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    .fade-in{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;}.fade-in.visible{opacity:1;transform:translateY(0);}
-    .classes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px;}
-    .filter-bar{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:40px;}
-    .filter-btn{padding:8px 20px;border-radius:50px;border:2px solid #ddd;background:white;font-family:var(--font-body);font-size:.88rem;cursor:pointer;transition:var(--transition);font-weight:500;}
-    .filter-btn:hover,.filter-btn.active{background:var(--purple);color:white;border-color:var(--purple);}
-    .timing-bar{display:flex;align-items:center;gap:8px;background:var(--purple-light);padding:10px 14px;border-radius:8px;margin-bottom:16px;font-size:.82rem;color:var(--purple);font-weight:600;}
-    .college-banner{background:linear-gradient(135deg,var(--dark) 0%,#2d1b4e 100%);border-radius:var(--radius);padding:48px 40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:60px;}
-    .college-banner h2{color:var(--gold);margin-bottom:12px;}.college-banner p{color:rgba(255,255,255,.8);margin-bottom:24px;}
-    .college-banner ul{padding:0;}.college-banner ul li{color:rgba(255,255,255,.75);font-size:.9rem;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:center;gap:8px;}
-    .college-banner ul li::before{content:'✓';color:var(--gold);font-weight:700;}
-    @media(max-width:700px){.college-banner{grid-template-columns:1fr;}}
+    .btn { display:inline-block; padding:14px 32px; border-radius:50px; font-family:'Poppins',sans-serif; font-weight:600; font-size:.95rem; transition:all .3s; text-decoration:none; }
+    .btn-purple { background:var(--purple); color:#fff; }
+    .btn-purple:hover { background:var(--purple-light,#8b2fc9); transform:translateY(-2px); }
+    .btn-gold { background:var(--gold); color:var(--dark); }
+    .btn-gold:hover { transform:translateY(-3px); }
+    .section-padding { padding:5rem 0; }
+    .bg-light { background:#f8f5ff; }
+    .section-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.5rem); color:var(--dark); margin-bottom:.75rem; }
+
+    /* Page Hero */
+    .page-hero { background:linear-gradient(135deg,var(--dark) 0%,#2d1b69 100%); padding:140px 0 80px; text-align:center; }
+    .page-hero h1 { font-family:'Playfair Display',serif; color:#fff; font-size:clamp(2.2rem,5vw,3.5rem); }
+    .page-hero p { color:rgba(255,255,255,.7); font-size:1.05rem; margin-top:1rem; }
+
+    /* Filter tabs */
+    .filter-bar { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-bottom:48px; }
+    .filter-btn { padding:10px 24px; border-radius:30px; border:2px solid var(--purple); background:transparent; color:var(--purple); font-family:'Poppins',sans-serif; font-size:.88rem; font-weight:600; cursor:pointer; transition:all .3s; }
+    .filter-btn:hover, .filter-btn.active { background:var(--purple); color:#fff; }
+
+    /* Class cards grid */
+    .classes-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:28px; }
+    .class-card { background:#fff; border-radius:20px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,.07); border:1px solid rgba(106,13,173,.1); transition:all .3s; }
+    .class-card:hover { transform:translateY(-6px); box-shadow:0 15px 40px rgba(106,13,173,.18); }
+    .class-card[style*="display:none"] { display:none !important; }
+    .class-top { background:linear-gradient(135deg,var(--dark),#2d1b69); padding:2rem; text-align:center; }
+    .class-icon { font-size:3rem; margin-bottom:.8rem; display:block; }
+    .class-badge { display:inline-block; background:var(--gold); color:var(--dark); font-size:.7rem; font-weight:700; padding:3px 10px; border-radius:20px; margin-top:6px; text-transform:uppercase; }
+    .class-top h3 { color:#fff; font-family:'Playfair Display',serif; font-size:1.2rem; margin-top:.5rem; }
+    .class-body { padding:1.5rem; }
+    .class-body p { color:#666; font-size:.88rem; line-height:1.6; margin-bottom:1rem; }
+    .timing-chip { display:inline-flex; align-items:center; gap:6px; background:rgba(106,13,173,.08); color:var(--purple); padding:6px 12px; border-radius:20px; font-size:.75rem; font-weight:600; margin:3px; }
+    .timing-chip i { font-size:.7rem; }
+    .class-meta { display:flex; gap:12px; flex-wrap:wrap; margin:1rem 0; }
+    .class-meta span { color:#888; font-size:.78rem; display:flex; align-items:center; gap:5px; }
+    .class-meta i { color:var(--purple); }
+    .enroll-btn { display:block; width:100%; padding:12px; background:var(--purple); color:#fff; border:none; border-radius:10px; font-family:'Poppins',sans-serif; font-size:.9rem; font-weight:600; cursor:pointer; text-align:center; text-decoration:none; transition:all .3s; margin-top:1rem; }
+    .enroll-btn:hover { background:var(--purple-light,#8b2fc9); }
+
+    /* Schedule table section */
+    .schedule-section { padding:5rem 0; background:var(--dark); }
+    .schedule-section h2 { font-family:'Playfair Display',serif; color:#fff; font-size:2rem; text-align:center; margin-bottom:2.5rem; }
+    .schedule-tabs { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:32px; }
+    .sched-tab { padding:10px 24px; border-radius:30px; border:2px solid rgba(255,255,255,.25); background:transparent; color:rgba(255,255,255,.7); font-family:'Poppins',sans-serif; font-size:.88rem; font-weight:600; cursor:pointer; transition:all .3s; }
+    .sched-tab:hover, .sched-tab.active { background:var(--gold); color:var(--dark); border-color:var(--gold); }
+    .sched-panel { display:none; }
+    .sched-panel.active { display:block; }
+    .sched-table { width:100%; border-collapse:collapse; background:rgba(255,255,255,.05); border-radius:16px; overflow:hidden; }
+    .sched-table th { background:rgba(106,13,173,.6); color:#fff; padding:14px 16px; text-align:left; font-size:.88rem; font-weight:600; font-family:'Poppins',sans-serif; }
+    .sched-table td { padding:13px 16px; color:rgba(255,255,255,.8); font-size:.88rem; border-bottom:1px solid rgba(255,255,255,.06); }
+    .sched-table tr:last-child td { border-bottom:none; }
+    .sched-table tr:hover td { background:rgba(255,255,255,.04); }
+    .tag-all { display:inline-block; background:rgba(212,175,55,.2); color:var(--gold); padding:3px 10px; border-radius:12px; font-size:.72rem; font-weight:600; }
+    .tag-female { display:inline-block; background:rgba(255,105,180,.15); color:#ff69b4; padding:3px 10px; border-radius:12px; font-size:.72rem; font-weight:600; }
+    .note-box { background:rgba(212,175,55,.1); border:1px solid rgba(212,175,55,.3); border-radius:12px; padding:14px 18px; margin-top:20px; color:rgba(255,255,255,.75); font-size:.85rem; }
+    .note-box i { color:var(--gold); margin-right:8px; }
+
+    /* Event Management Banner */
+    .event-banner { background:linear-gradient(135deg,var(--dark) 0%,#2d1b4e 100%); border-radius:20px; padding:48px 40px; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; margin-top:60px; }
+    .event-banner h2 { color:var(--gold); font-family:'Playfair Display',serif; margin-bottom:12px; }
+    .event-banner p { color:rgba(255,255,255,.8); margin-bottom:24px; font-size:.95rem; line-height:1.7; }
+    .event-banner ul { padding:0; }
+    .event-banner ul li { color:rgba(255,255,255,.75); font-size:.9rem; padding:7px 0; border-bottom:1px solid rgba(255,255,255,.08); display:flex; align-items:center; gap:10px; }
+    .event-banner ul li:last-child { border-bottom:none; }
+    .event-banner ul li::before { content:'✓'; color:var(--gold); font-weight:700; }
+
+    /* Mobile */
+    @media (max-width:700px) {
+      .event-banner { grid-template-columns:1fr; padding:28px 20px; }
+      .section-padding { padding:3rem 0; }
+      .classes-grid { grid-template-columns:1fr; }
+      .sched-table th, .sched-table td { padding:10px 12px; font-size:.8rem; }
+    }
   </style>
 </head>
 <body>
 
-<nav class="navbar">
-  <div class="nav-inner">
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
     <a href="index.html" class="nav-logo">
-      <img src="images/logo.png" alt="Logo" style="height:44px;width:44px;border-radius:50%;object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-      <div class="logo-icon" style="display:none;">🎭</div>
-      <div class="logo-text"><span>Pooja Dance & Art</span><span>Academy</span></div>
+      <img src="images/logo.png" alt="Pooja Dance & Art Academy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="logo-fallback" style="display:none;"><span class="logo-text">PDAA</span></div>
     </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
-      <li><a href="classes.html">Classes</a></li><li><a href="gallery.html">Gallery</a></li>
-      <li><a href="events.html">Events</a></li><li><a href="contact.html" class="nav-cta">Enquire Now</a></li>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="classes.html" class="active">Classes</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="contact.html" class="nav-cta">Enroll Now</a></li>
     </ul>
-    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
-  </div>
-  <div class="mobile-nav" id="mobileNav">
-    <a href="index.html">Home</a><a href="about.html">About</a><a href="classes.html">Classes</a>
-    <a href="gallery.html">Gallery</a><a href="events.html">Events</a><a href="contact.html">Enquire Now</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
+<!-- PAGE HERO -->
 <div class="page-hero">
-  <h1>Classes & Programmes</h1>
-  <p>Nine creative disciplines · Morning & Evening batches · Offline in Nagpur & Online globally</p>
-  <div class="breadcrumb"><a href="index.html">Home</a> › Classes & Programmes</div>
-</div>
-
-<!-- TIMING BANNER -->
-<div style="background:var(--dark);padding:20px 24px;">
-  <div style="max-width:1160px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;justify-content:center;align-items:center;">
-    <div style="color:rgba(255,255,255,.9);font-size:.88rem;display:flex;align-items:center;gap:8px;"><span style="color:var(--gold);font-size:1rem;">⏰</span><strong style="color:var(--gold);">Mon–Fri Morning:</strong>&nbsp;6:00 AM – 1:00 PM</div>
-    <div style="color:rgba(255,255,255,.9);font-size:.88rem;display:flex;align-items:center;gap:8px;"><span style="color:var(--gold);font-size:1rem;">⏰</span><strong style="color:var(--gold);">Mon–Fri Evening:</strong>&nbsp;4:00 PM – 9:00 PM</div>
-    <div style="color:rgba(255,255,255,.9);font-size:.88rem;display:flex;align-items:center;gap:8px;"><span style="color:var(--gold);font-size:1rem;">⏰</span><strong style="color:var(--gold);">Saturday:</strong>&nbsp;6:00 AM – 1:00 PM (Morning only)</div>
-    <div style="color:rgba(255,255,255,.9);font-size:.88rem;display:flex;align-items:center;gap:8px;"><span style="color:var(--gold);font-size:1rem;">🌐</span><strong style="color:var(--gold);">Online Classes:</strong>&nbsp;Available Globally</div>
+  <div class="container">
+    <h1>Classes & <em style="font-style:italic;color:var(--gold);">Schedule</em></h1>
+    <p>Nine creative disciplines · Morning, Evening, Weekend batches · Offline in Nagpur & Online globally</p>
   </div>
 </div>
 
+<!-- CLASS CARDS -->
 <section class="section-padding">
   <div class="container">
     <div class="filter-bar">
-      <button class="filter-btn active">All</button>
-      <button class="filter-btn">Dance & Fitness</button>
-      <button class="filter-btn">Arts</button>
-      <button class="filter-btn">Music</button>
-      <button class="filter-btn">Culture & More</button>
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="dance">Dance & Fitness</button>
+      <button class="filter-btn" data-filter="arts">Arts</button>
+      <button class="filter-btn" data-filter="music">Music</button>
+      <button class="filter-btn" data-filter="culture">Culture & More</button>
     </div>
 
-    <div class="classes-grid">
-      <div class="class-card">
-        <div class="class-image">🩰<span class="class-badge">Most Popular</span></div>
-        <div class="class-body">
+    <div class="classes-grid" id="classesGrid">
+
+      <div class="class-card fade-in" data-category="dance">
+        <div class="class-top">
+          <span class="class-icon">🩰</span>
+          <span class="class-badge">Most Popular</span>
           <h3>Dance Classes</h3>
-          <p>Classical (Bharatnatyam, Kathak), Bollywood, and contemporary dance for all levels. Mrs. Pooja Rathi's signature programme with 35+ years of expertise.</p>
-          <div class="timing-bar">⏰ Morning & Evening Batches · Online Available</div>
-          <div class="class-meta"><span>👶 Ages 5+</span><span>👨‍👩‍👧 All Genders</span></div>
-          <a href="contact.html" class="btn btn-purple" style="width:100%;text-align:center;">Enquire & Enroll</a>
+        </div>
+        <div class="class-body">
+          <p>Classical (Bharatnatyam, Kathak), Bollywood, and contemporary. Mrs. Pooja Rathi's signature programme with 35+ years of expertise.</p>
+          <div>
+            <span class="timing-chip"><i class="fas fa-sun"></i> Morning</span>
+            <span class="timing-chip"><i class="fas fa-moon"></i> Evening</span>
+            <span class="timing-chip"><i class="fas fa-globe"></i> Online</span>
+          </div>
+          <div class="class-meta">
+            <span><i class="fas fa-users"></i> Girls, Ladies & All</span>
+            <span><i class="fas fa-child"></i> Age 3+</span>
+          </div>
+          <a href="contact.html" class="enroll-btn">Enquire & Enroll</a>
         </div>
       </div>
 
-      <div class="class-card">
-        <div class="class-image">💪</div>
+      <div class="class-card fade-in" data-category="dance">
+        <div class="class-top">
+          <span class="class-icon">💪</span>
+          <h3>Zumba & Fitness</h3>
+        </div>
         <div class="class-body">
-          <h3>Fitness Sessions</h3>
-          <p>Dance-based fitness classes designed for ladies — energetic, fun, and effective. Combines aerobics, Zumba-style movement, and toning exercises.</p>
-          <div class="timing-bar">⏰ Morning & Evening Batches</div>
-          <div class="class-meta"><span>👩 Ladies Only</span><span>🏋️ All Fitness Levels</span></div>
-          <a href="contact.html" class="btn btn-purple" style="width:100%;text-align:center;">Enquire & Enroll</a>
+          <p>Dance-based fitness — Zumba-style movement and toning. Energetic, fun, and effective. Also includes Exercise + Dance for 40+ ladies.</p>
+          <div>
+            <span class="timing-chip"><i class="fas fa-sun"></i> Morning</span>
+          </div>
+          <div class="class-meta">
+            <span><i class="fas fa-venus"></i> Females Only</span>
+            <span><i class="fas fa-users"></i> All Ages</span>
+          </div>
+          <a href="contact.html" class="enroll-btn">Enquire & Enroll</a>
         </div>
       </div>
 
-      <div class="class-card">
-        <div class="class-image">🎨</div>
-        <div class="class-body">
+      <div class="class-card fade-in" data-category="arts">
+        <div class="class-top">
+          <span class="class-icon">🎨</span>
           <h3>Drawing & Painting</h3>
-          <p>Structured art education from basic sketching to advanced canvas painting. Students learn composition, colour theory, and multiple art styles.</p>
-          <div class="timing-bar">⏰ Morning & Evening Batches · Online Available</div>
-          <div class="class-meta"><span>👶 Ages 5+</span><span>📈 Beginner to Advanced</span></div>
-          <a href="contact.html" class="btn btn-purple" style="width:100%;text-align:center;">Enquire & Enroll</a>
+        </div>
+        <div class="class-body">
+          <p>Basic sketching to advanced canvas painting. Structured curriculum covering composition, colour theory, and multiple styles. Exam preparation available on Sundays.</p>
+          <div>
+            <span class="timing-chip"><i class="fas fa-moon"></i> Evening</span>
+            <span class="timing-chip"><i class="fas fa-calendar"></i> Sunday Advance</span>
+            <span class="timing-chip"><i class="fas fa-globe"></i> Online</span>
+          </div>
+          <div class="class-meta">
+            <span><i class="fas fa-users"></i> All</span>
+            <span><i class="fas fa-child"></i> Age 5+</span>
+          </div>
+          <a href="contact.html" class="enroll-btn">Enquire & Enroll</a>
         </div>
       </div>
 
-      <div class="class-card">
-        <div class="class-image">🎭</div>
+      <div class="class-card fade-in" data-category="arts">
+        <div class="class-top">
+          <span class="class-icon">🎭</span>
+          <h3>Acting & Theatre</h3>
+        </div>
         <div class="class-body">
-          <h3>Acting</h3>
-          <p>Build confidence, expression, and stage presence through workshops covering script reading, character development, and performance skills.</p>
-          <div class="timing-bar">⏰ Morning & Evening Batches</div>
-          <div class="class-meta"><span>👶 Ages 8+</span><span>🎪 Stage & Screen</span></div>
-          <a href="contact.html" class="btn btn-purple" style="width:100%;text-align:center;">Enquire & Enroll</a>
+          <p>Build confidence, expression, and stage presence. Script reading, character development, and live performance skills.</p>
+          <div>
+            <span class="timing-chip"><i class="fas fa-sun"></i> Morning</span>
+            <span class="timing-chip"><i class="fas fa-moon"></i> Evening</span>
+          </div>
+          <div class="class-meta">
+            <span><i class="fas fa-users"></i> All</span>
+            <span><i class="fas fa-child"></i> Age 8+</span>
+          </div>
+          <a href="contact.html" class="enroll-btn">Enquire & Enroll</a>
         </div>
       </div>
 
-      <div class="class-card">
-        <div class="class-image">🎤</div>
+      <div class="class-card fade-in" data-category="music">
+        <div class="class-top">
+          <span class="class-icon">🎤</span>
+          <h3>Singing & Keyboard</h3>
+        </div>
         <div class="class-body">
-          <h3>Singing</h3>
-          <p>Vocal training in classical and light music — riyaaz, ragas, and modern song presentation. Building technical ability and stage confidence.</p>
-          <div class="timing-bar">⏰ Morning & Evening Batches · Online Available</div>
-          <div class="class-meta"><span>👶 Ages 6+</span><span>🎵 Classical & Light Music</span></div>
-          <a href="contact.html" class="btn btn-purple" style="width:100%;text-align:center;">Enquire & Enroll</a>
+          <p>Vocal training in classical and light music combined with keyboard lessons. Building technical ability and stage confidence together.</p>
+          <div>
+            <span class="timing-chip"><i class="fas fa-moon"></i> Evening 4–5 PM</span>
+            <span class="timing-chip"><i class="fas fa-calendar"></i> Sunday</span>
+            <span class="timing-chip"><i class="fas fa-globe"></i> Online</span>
+          </div>
+          <div class="class-meta">
+            <span><i class="fas fa-users"></i> All</span>
+            <span><i class="fas fa-child"></i> Age 8+</span>
+          </div>
+          <a href="contact.html" class="enroll-btn">Enquire & Enroll</a>
         </div>
       </div>
 
-      <div class="class-card">
-        <div class="class-image">🎸</div>
+      <div class="class-card fade-in" data-category="culture">
+        <div class="class-top">
+          <span class="class-icon">✍️</span>
+          <h3>Handwriting & Sketching</h3>
+        </div>
         <div class="class-body">
-          <h3>Musical Instruments</h3>
-          <p>Learn keyboard, tabla, guitar, and more. Structured curriculum from first notes to full compositions under expert guidance.</p>
-          <div class="timing-bar">⏰ Morning & Evening Batches</div>
-          <div class="class-meta"><span>👶 Ages 6+</span><span>🎹 Multiple Instruments</span></div>
-          <a href="contact.html" class="btn btn-purple" style="width:100%;text-align:center;">Enquire & Enroll</a>
+          <p>Handwriting improvement and basic sketching for school-age children. Improves letter formation and academic presentation.</p>
+          <div>
+            <span class="timing-chip"><i class="fas fa-moon"></i> Evening 5–6 PM</span>
+          </div>
+          <div class="class-meta">
+            <span><i class="fas fa-users"></i> All</span>
+            <span><i class="fas fa-child"></i> Age 8+</span>
+          </div>
+          <a href="contact.html" class="enroll-btn">Enquire & Enroll</a>
         </div>
       </div>
 
-      <div class="class-card">
-        <div class="class-image">✍️</div>
+      <div class="class-card fade-in" data-category="culture">
+        <div class="class-top">
+          <span class="class-icon">🕉️</span>
+          <h3>Kathak</h3>
+        </div>
         <div class="class-body">
-          <h3>Handwriting Improvement</h3>
-          <p>Calligraphy and penmanship for school-age children — improves letter formation, speed, and presentation to benefit academic performance.</p>
-          <div class="timing-bar">⏰ Morning Batch · Saturday Available</div>
-          <div class="class-meta"><span>👶 Ages 5–15</span><span>📚 School Students</span></div>
-          <a href="contact.html" class="btn btn-purple" style="width:100%;text-align:center;">Enquire & Enroll</a>
+          <p>Classical Kathak dance for all ages. Connecting young learners to India's rich cultural heritage through movement and expression.</p>
+          <div>
+            <span class="timing-chip"><i class="fas fa-calendar"></i> Saturday 5–6 PM</span>
+          </div>
+          <div class="class-meta">
+            <span><i class="fas fa-users"></i> All</span>
+          </div>
+          <a href="contact.html" class="enroll-btn">Enquire & Enroll</a>
         </div>
       </div>
 
-      <div class="class-card">
-        <div class="class-image">🕉️</div>
+      <div class="class-card fade-in" data-category="culture">
+        <div class="class-top">
+          <span class="class-icon">📖</span>
+          <h3>English & Hindi Grammar</h3>
+        </div>
         <div class="class-body">
-          <h3>Shlok Learning</h3>
-          <p>Sanskrit shlok recitation — connecting young learners to India's spiritual and cultural heritage through pronunciation, memorization, and meaning.</p>
-          <div class="timing-bar">⏰ Morning Batch · Saturday Available</div>
-          <div class="class-meta"><span>👶 Ages 5–12</span><span>🙏 Cultural Heritage</span></div>
-          <a href="contact.html" class="btn btn-purple" style="width:100%;text-align:center;">Enquire & Enroll</a>
+          <p>Weekend grammar classes to strengthen language skills — both English and Hindi. Ideal for school students looking to improve academic performance.</p>
+          <div>
+            <span class="timing-chip"><i class="fas fa-calendar"></i> Saturday 6–7 PM</span>
+          </div>
+          <div class="class-meta">
+            <span><i class="fas fa-users"></i> All</span>
+          </div>
+          <a href="contact.html" class="enroll-btn">Enquire & Enroll</a>
         </div>
       </div>
+
+      <div class="class-card fade-in" data-category="dance">
+        <div class="class-top">
+          <span class="class-icon">🎪</span>
+          <span class="class-badge">Special</span>
+          <h3>Event Management</h3>
+        </div>
+        <div class="class-body">
+          <p>Professional Sangeet choreography, full wedding event management, and college event productions. Expert team with years of stage experience.</p>
+          <div>
+            <span class="timing-chip"><i class="fas fa-star"></i> By Appointment</span>
+          </div>
+          <div class="class-meta">
+            <span><i class="fas fa-users"></i> All Events</span>
+          </div>
+          <a href="contact.html" class="enroll-btn">Enquire Now</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE TABLE -->
+<section class="schedule-section">
+  <div class="container">
+    <h2>📅 Full Batch Schedule</h2>
+    <div class="schedule-tabs">
+      <button class="sched-tab active" data-tab="morning">☀️ Morning (Mon–Fri)</button>
+      <button class="sched-tab" data-tab="evening">🌙 Evening (Mon–Fri)</button>
+      <button class="sched-tab" data-tab="saturday">📅 Saturday</button>
+      <button class="sched-tab" data-tab="sunday">🌅 Sunday</button>
     </div>
 
-    <!-- College Events Banner -->
-    <div class="college-banner">
+    <div class="sched-panel active" id="tab-morning">
+      <table class="sched-table">
+        <thead><tr><th>Timing</th><th>Class</th><th>Age Group</th><th>For</th></tr></thead>
+        <tbody>
+          <tr><td>6:15 AM – 7:00 AM</td><td>Zumba</td><td>All Ages</td><td><span class="tag-female">Females</span></td></tr>
+          <tr><td>7:15 AM – 8:15 AM</td><td>Dance</td><td>All Ages</td><td><span class="tag-female">Girls & Ladies</span></td></tr>
+          <tr><td>9:00 AM – 10:00 AM</td><td>Yoga</td><td>All Ages</td><td><span class="tag-all">All</span></td></tr>
+          <tr><td>11:00 AM – 12:00 PM</td><td>Exercise + Dance</td><td>40+ Years</td><td><span class="tag-female">Ladies</span></td></tr>
+          <tr><td>12:00 PM – 1:00 PM</td><td>Dance</td><td>All Ages</td><td><span class="tag-female">Females</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sched-panel" id="tab-evening">
+      <table class="sched-table">
+        <thead><tr><th>Timing</th><th>Class</th><th>Age Group</th><th>For</th></tr></thead>
+        <tbody>
+          <tr><td>4:00 PM – 5:00 PM</td><td>Singing + Keyboard</td><td>8+ Years</td><td><span class="tag-all">All</span></td></tr>
+          <tr><td>5:00 PM – 6:00 PM</td><td>Dance</td><td>3 to 8 Years</td><td><span class="tag-all">All</span></td></tr>
+          <tr><td>5:00 PM – 6:00 PM</td><td>Handwriting Improvement / Sketching</td><td>8+ Years</td><td><span class="tag-all">All</span></td></tr>
+          <tr><td>6:00 PM – 7:00 PM</td><td>Dance</td><td>8+ Years</td><td><span class="tag-all">All</span></td></tr>
+          <tr><td>6:00 PM – 7:00 PM</td><td>Drawing</td><td>3 to 8 Years</td><td><span class="tag-all">All</span></td></tr>
+          <tr><td>7:00 PM – 8:00 PM</td><td>Dance</td><td>15+ Years</td><td><span class="tag-all">All</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sched-panel" id="tab-saturday">
+      <table class="sched-table">
+        <thead><tr><th>Timing</th><th>Class</th><th>Age Group</th><th>For</th></tr></thead>
+        <tbody>
+          <tr><td>5:00 PM – 6:00 PM</td><td>Kathak</td><td>All Ages</td><td><span class="tag-all">All</span></td></tr>
+          <tr><td>6:00 PM – 7:00 PM</td><td>English & Hindi Grammar</td><td>All Ages</td><td><span class="tag-all">All</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sched-panel" id="tab-sunday">
+      <table class="sched-table">
+        <thead><tr><th>Timing</th><th>Class</th><th>Age Group</th><th>For</th></tr></thead>
+        <tbody>
+          <tr><td>10:00 AM – 11:00 AM</td><td>Instrument + Singing</td><td>All Ages</td><td><span class="tag-all">All</span></td></tr>
+          <tr><td>11:00 AM – 12:00 PM</td><td>Advance Drawing / Sketching</td><td>All Ages</td><td><span class="tag-all">All</span></td></tr>
+        </tbody>
+      </table>
+      <div class="note-box"><i class="fas fa-info-circle"></i><strong>Note:</strong> The Sunday Advance Drawing/Sketching class is primarily for exam preparation at a professional level.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EVENT MANAGEMENT BANNER -->
+<section class="section-padding">
+  <div class="container">
+    <div class="event-banner fade-in">
       <div>
         <p style="color:var(--gold);font-weight:600;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Special Programme</p>
-        <h2>College Event Performances</h2>
-        <p>Looking for professional choreography and performance direction for your college fest? Our expert team has delivered outstanding results for college events across Nagpur.</p>
-        <a href="contact.html" class="btn btn-primary">Collaborate With Us</a>
+        <h2>Event Management & Sangeets</h2>
+        <p>Planning a Sangeet or college event? Our expert team has delivered outstanding choreography and full event productions across Nagpur. We handle everything — from concept to curtain call.</p>
+        <a href="contact.html" class="btn btn-gold">Plan Your Event →</a>
       </div>
       <div>
         <ul>
-          <li>Professional group choreography</li>
+          <li>Professional Sangeet choreography</li>
+          <li>Full wedding event management</li>
+          <li>College fest performances</li>
           <li>Stage direction and blocking</li>
           <li>Costume and aesthetic guidance</li>
-          <li>Rehearsal coordination</li>
-          <li>Solo and group performance training</li>
-          <li>Flash mob and fusion act design</li>
+          <li>Group & solo performance training</li>
         </ul>
       </div>
     </div>
@@ -182,24 +388,109 @@
 </section>
 
 <!-- CTA -->
-<section style="background:var(--purple-light);padding:60px 24px;text-align:center;">
+<section style="background:var(--purple);padding:60px 24px;text-align:center;">
   <div class="container">
-    <h2 style="margin-bottom:12px;">Not Sure Which Class to Start With?</h2>
-    <p style="margin-bottom:28px;max-width:520px;margin-left:auto;margin-right:auto;">Book a free trial class — offline in Nagpur or an online demo session. No commitment, just come and experience.</p>
-    <a href="contact.html" class="btn btn-purple">Book a Free Trial</a>
+    <h2 style="color:#fff;font-family:'Playfair Display',serif;margin-bottom:12px;">Not sure which class to join?</h2>
+    <p style="color:rgba(255,255,255,.85);margin-bottom:28px;max-width:520px;margin-left:auto;margin-right:auto;">Come visit us or message on WhatsApp — we'll help you find the perfect batch.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="contact.html" class="btn btn-gold">Book a Free Trial</a>
+      <a href="https://wa.me/919373235550?text=Hi%20PDAA!%20I%20want%20to%20know%20about%20your%20classes." target="_blank" class="btn" style="background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.4);"><i class="fab fa-whatsapp"></i> Ask on WhatsApp</a>
+    </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-grid">
-    <div class="footer-brand"><span class="footer-logo-text">Pooja Dance & Art Academy</span><p>Est. 2005 · 25,000+ students trained · Nurturing creativity, building confidence, and celebrating the arts.</p><div class="footer-social"><a href="https://www.instagram.com/poojadanceandartoffical_" target="_blank">📸</a><a href="https://www.facebook.com/share/1Cdw4PH6pj/" target="_blank">📘</a><a href="https://www.youtube.com/@Pooja-Dance-Art-Academy" target="_blank">▶️</a><a href="https://wa.me/919373235550" target="_blank">💬</a></div></div>
-    <div class="footer-col"><h4>Quick Links</h4><a href="index.html">Home</a><a href="about.html">About Us</a><a href="classes.html">Classes</a><a href="gallery.html">Gallery</a><a href="events.html">Events</a><a href="contact.html">Contact</a></div>
-    <div class="footer-col"><h4>Our Classes</h4><a href="classes.html">Dance Classes</a><a href="classes.html">Fitness Sessions</a><a href="classes.html">Drawing & Painting</a><a href="classes.html">Singing & Music</a><a href="classes.html">Acting</a></div>
-    <div class="footer-col"><h4>Contact Us</h4><a href="https://maps.app.goo.gl/Hpb14Jan4dCLu5x76" target="_blank">📍 Gokulpeth Market, Nagpur 440010</a><a href="tel:+919373235550">📞 +91 93732 35550</a><a href="mailto:poojadanceartacademyofficial@gmail.com">✉️ Email Us</a><a href="#">⏰ Mon–Fri: 6AM–1PM &amp; 4PM–9PM</a></div>
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="margin-bottom:1rem;display:inline-flex;">
+        <img src="images/logo.png" alt="PDAA Logo" style="height:48px;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="logo-fallback" style="display:none;"><span class="logo-text">PDAA</span></div>
+      </a>
+      <p>Nurturing creativity and artistic excellence in Nagpur since 2002. Where every child discovers their unique talent.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/poojadanceandartoffical_" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/share/1Cdw4PH6pj/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.youtube.com/channel/poojadanceartacademy" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://wa.me/919373235550" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="classes.html">Our Classes</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="contact.html">Contact & Enroll</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Our Classes</h4>
+      <ul>
+        <li><a href="classes.html">Dance Classes</a></li>
+        <li><a href="classes.html">Fitness & Zumba</a></li>
+        <li><a href="classes.html">Drawing & Painting</a></li>
+        <li><a href="classes.html">Singing & Keyboard</a></li>
+        <li><a href="classes.html">Acting & Theatre</a></li>
+        <li><a href="classes.html">Event Management</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h4>Contact Us</h4>
+      <p><i class="fas fa-map-marker-alt"></i> 1st Floor, Above Om Medical, Gokulpeth Market, Nagpur 440010</p>
+      <p><i class="fas fa-phone"></i> <a href="tel:+919373235550">+91 93732 35550</a></p>
+      <p><i class="fas fa-envelope"></i> <a href="mailto:poojadanceartacademyofficial@gmail.com">poojadanceartacademyofficial@gmail.com</a></p>
+      <p><i class="fas fa-clock"></i> Mon–Fri: 6AM–1PM & 4PM–9PM</p>
+      <p style="margin-top:1rem;">
+        <a href="https://maps.app.goo.gl/Hpb14Jan4dCLu5x76" target="_blank" style="background:var(--gold);color:#000;padding:8px 18px;border-radius:20px;text-decoration:none;font-size:.85rem;font-weight:600;display:inline-block;">
+          <i class="fas fa-directions"></i> Get Directions
+        </a>
+      </p>
+    </div>
   </div>
-  <div class="footer-bottom"><span>© 2026 Pooja Dance & Art Academy. All rights reserved.</span><span>Est. 2005 · Nagpur, Maharashtra</span></div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Pooja Dance & Art Academy, Nagpur. All rights reserved.</p>
+    <p style="font-size:.8rem;opacity:.6;margin-top:4px;">Est. 2002 · Gokulpeth, Nagpur · <a href="tel:+919373235550" style="color:inherit;">+91 93732 35550</a></p>
+  </div>
 </footer>
-<a href="https://wa.me/919373235550" class="whatsapp-float" target="_blank"><div class="whatsapp-tooltip">Chat with us</div><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+
+<a href="https://wa.me/919373235550?text=Hi%20PDAA!%20I%20want%20to%20know%20about%20your%20classes." class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
 <script src="js/main.js"></script>
+<script>
+  // Filter buttons
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const classCards = document.querySelectorAll('.class-card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      classCards.forEach(card => {
+        if (filter === 'all' || card.dataset.category === filter) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Schedule tabs
+  const schedTabs = document.querySelectorAll('.sched-tab');
+  const schedPanels = document.querySelectorAll('.sched-panel');
+  schedTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      schedTabs.forEach(t => t.classList.remove('active'));
+      schedPanels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+</script>
 </body>
 </html>
