@@ -98,7 +98,7 @@ ul { list-style: none; }
   align-items: center;
   gap: 10px;
 }
-.nav-logo img { height: 44px; width: auto; }
+.nav-logo img { height: 60px; width: auto; }
 .logo-fallback {
   display: flex;
   align-items: center;
