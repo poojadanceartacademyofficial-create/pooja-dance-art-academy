@@ -36,7 +36,7 @@
     /* Founder section */
     .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
     .about-image-box { position:relative; border-radius:20px; overflow:hidden; }
-    .about-image-box img { width:100%; height:480px; object-fit:cover; display:block; }
+    .about-image-box img { width:100%; height:560px; object-fit:cover; object-position:top center; display:block; border-radius:20px; }
     .about-placeholder { width:100%; height:480px; background:linear-gradient(135deg,var(--purple),#9b31e0); display:flex; align-items:center; justify-content:center; flex-direction:column; color:rgba(255,255,255,.4); gap:1rem; border-radius:20px; }
     .about-placeholder i { font-size:4rem; }
     .about-badge { position:absolute; bottom:20px; right:20px; background:var(--gold); color:var(--dark); padding:10px 16px; border-radius:12px; font-weight:700; font-size:.85rem; text-align:center; }
@@ -121,7 +121,6 @@
     <div class="about-grid">
       <div class="about-image-box fade-in">
         <img src="images/founder.jpeg" alt="Mrs. Pooja Rathi — Founder" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-        <div class="about-placeholder"><i class="fas fa-user-circle"></i><span>Founder Photo Coming Soon</span></div>
         <div class="about-badge"><strong>40+</strong><span>Years Teaching</span></div>
       </div>
       <div class="fade-in">
