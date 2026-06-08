@@ -4,482 +4,570 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery | Pooja Dance & Art Academy – Nagpur</title>
-  <meta name="description" content="Photos and videos from Pooja Dance & Art Academy – annual shows, competitions, workshops, and everyday moments from Nagpur's premier creative academy.">
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Photo albums from Pooja Dance & Art Academy – dance, art, annual shows, singing, fitness and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
   <style>
-    /* Gallery Page Specific */
-    .gallery-hero {
-      background: linear-gradient(135deg, var(--dark) 0%, #2d1b69 100%);
-      padding: 140px 0 80px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+    /* PAGE HERO */
+    .page-hero { background:linear-gradient(135deg,var(--dark) 0%,#2d1b69 100%); padding:140px 0 80px; text-align:center; }
+    .page-hero h1 { font-family:'Playfair Display',serif; color:#fff; font-size:clamp(2.2rem,5vw,3.5rem); }
+    .page-hero p { color:rgba(255,255,255,.7); font-size:1.05rem; margin-top:1rem; }
+
+    /* ALBUMS GRID */
+    .albums-section { padding:4rem 0; }
+    .albums-grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
     }
-    .gallery-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at center, rgba(106,13,173,0.3) 0%, transparent 70%);
+    @media(max-width:900px) { .albums-grid { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:500px) { .albums-grid { grid-template-columns:1fr; } }
+
+    .album-card {
+      position:relative;
+      border-radius:20px;
+      overflow:hidden;
+      aspect-ratio:4/3;
+      cursor:pointer;
+      box-shadow:0 4px 24px rgba(0,0,0,.18);
+      transition:transform .3s, box-shadow .3s;
     }
-    .gallery-hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      color: #fff;
-      font-family: 'Playfair Display', serif;
-      position: relative;
+    .album-card:hover { transform:translateY(-6px); box-shadow:0 16px 48px rgba(106,13,173,.3); }
+
+    /* Cover image — first photo of the album */
+    .album-cover {
+      width:100%; height:100%;
+      object-fit:cover;
+      display:block;
+      transition:transform .4s;
     }
-    .gallery-hero p {
-      color: rgba(255,255,255,0.75);
-      font-size: 1.1rem;
-      margin-top: 1rem;
-      position: relative;
+    .album-card:hover .album-cover { transform:scale(1.06); }
+
+    /* Fallback gradient when no photo yet */
+    .album-bg {
+      width:100%; height:100%;
+      display:flex; align-items:center; justify-content:center;
+      font-size:4rem;
+    }
+    .album-bg-dance    { background:linear-gradient(135deg,#2d1b69,#6A0DAD); }
+    .album-bg-art      { background:linear-gradient(135deg,#1a3a2a,#2d6a4f); }
+    .album-bg-annual   { background:linear-gradient(135deg,#3a1a1a,#8b2500); }
+    .album-bg-singing  { background:linear-gradient(135deg,#1a2a3a,#0d4080); }
+    .album-bg-fitness  { background:linear-gradient(135deg,#2a1a3a,#6a0d8a); }
+    .album-bg-workshop { background:linear-gradient(135deg,#2a2a1a,#806a0d); }
+
+    /* Overlay — always visible, stronger at bottom */
+    .album-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,.08) 0%,
+        rgba(0,0,0,.15) 40%,
+        rgba(0,0,0,.72) 100%
+      );
+      display:flex; flex-direction:column;
+      justify-content:flex-end;
+      padding:1.4rem 1.6rem;
+      transition:background .3s;
+    }
+    .album-card:hover .album-overlay {
+      background:linear-gradient(
+        to bottom,
+        rgba(106,13,173,.15) 0%,
+        rgba(0,0,0,.25) 40%,
+        rgba(0,0,0,.82) 100%
+      );
+    }
+    .album-name {
+      font-family:'Playfair Display',serif;
+      font-size:1.4rem;
+      color:#fff;
+      font-weight:700;
+      margin-bottom:4px;
+      text-shadow:0 2px 8px rgba(0,0,0,.5);
+    }
+    .album-count {
+      font-size:.78rem;
+      color:rgba(255,255,255,.75);
+      font-family:'Poppins',sans-serif;
+      display:flex; align-items:center; gap:6px;
+    }
+    .album-count i { color:var(--gold); }
+    .album-open-hint {
+      position:absolute; top:14px; right:14px;
+      background:rgba(255,255,255,.15);
+      backdrop-filter:blur(4px);
+      border:1px solid rgba(255,255,255,.25);
+      color:#fff;
+      border-radius:20px;
+      padding:5px 12px;
+      font-size:.72rem;
+      font-family:'Poppins',sans-serif;
+      font-weight:600;
+      opacity:0;
+      transition:opacity .3s;
+    }
+    .album-card:hover .album-open-hint { opacity:1; }
+
+    /* ── ALBUM DETAIL VIEW ── */
+    .album-detail {
+      display:none;
+      padding:0 0 4rem;
+    }
+    .album-detail.active { display:block; }
+    .detail-header {
+      display:flex; align-items:center; gap:16px;
+      padding:2rem 0 1.5rem;
+      border-bottom:1px solid rgba(106,13,173,.15);
+      margin-bottom:2rem;
+    }
+    .back-btn {
+      display:flex; align-items:center; gap:8px;
+      background:var(--purple); color:#fff;
+      border:none; border-radius:30px;
+      padding:10px 20px;
+      font-family:'Poppins',sans-serif;
+      font-size:.88rem; font-weight:600;
+      cursor:pointer; transition:all .3s;
+      text-decoration:none;
+    }
+    .back-btn:hover { background:var(--purple-light,#8b2fc9); transform:translateX(-3px); }
+    .detail-title {
+      font-family:'Playfair Display',serif;
+      font-size:1.8rem; color:var(--dark);
     }
 
-    /* Filter Tabs */
-    .gallery-filters {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      padding: 3rem 0 2rem;
+    /* Photos grid inside album */
+    .photos-grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
     }
-    .filter-btn {
-      padding: 10px 24px;
-      border: 2px solid var(--purple);
-      background: transparent;
-      color: var(--purple);
-      border-radius: 30px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: var(--purple);
-      color: #fff;
-    }
+    @media(max-width:700px) { .photos-grid { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:420px) { .photos-grid { grid-template-columns:1fr; } }
 
-    /* Masonry Grid */
-    .gallery-grid {
-      columns: 4;
-      column-gap: 16px;
-      padding-bottom: 4rem;
+    .photo-item {
+      border-radius:14px; overflow:hidden;
+      aspect-ratio:4/3; position:relative;
+      cursor:pointer;
+      box-shadow:0 2px 12px rgba(0,0,0,.1);
+      transition:transform .3s, box-shadow .3s;
     }
-    @media (max-width: 1100px) { .gallery-grid { columns: 3; } }
-    @media (max-width: 700px) { .gallery-grid { columns: 2; } }
-    @media (max-width: 420px) { .gallery-grid { columns: 1; } }
-
-    .gallery-item {
-      break-inside: avoid;
-      margin-bottom: 16px;
-      border-radius: 12px;
-      overflow: hidden;
-      position: relative;
-      cursor: pointer;
+    .photo-item:hover { transform:translateY(-4px); box-shadow:0 10px 30px rgba(106,13,173,.2); }
+    .photo-item img {
+      width:100%; height:100%; object-fit:cover;
+      display:block; transition:transform .4s;
     }
-    .gallery-item img {
-      width: 100%;
-      display: block;
-      transition: transform 0.4s ease;
+    .photo-item:hover img { transform:scale(1.05); }
+    .photo-placeholder {
+      width:100%; height:100%;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      gap:8px; color:rgba(255,255,255,.45);
+      font-family:'Poppins',sans-serif; font-size:.8rem;
     }
-    .gallery-item:hover img { transform: scale(1.04); }
-    .gallery-item .overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(26,26,46,0.85) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity 0.3s;
-      display: flex;
-      align-items: flex-end;
-      padding: 1rem;
-    }
-    .gallery-item:hover .overlay { opacity: 1; }
-    .gallery-item .overlay span {
-      color: #fff;
-      font-size: 0.85rem;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    /* Placeholder cards for demo */
-    .gallery-placeholder {
-      width: 100%;
-      background: linear-gradient(135deg, #2d1b69, #6A0DAD);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,0.7);
-      font-family: 'Poppins', sans-serif;
-      gap: 8px;
-      border-radius: 12px;
-    }
-    .gallery-placeholder i { font-size: 2rem; opacity: 0.5; }
-    .gallery-placeholder span { font-size: 0.8rem; text-align: center; padding: 0 12px; }
+    .photo-placeholder i { font-size:2rem; }
 
     /* Lightbox */
     .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.92);
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
+      display:none; position:fixed; inset:0;
+      background:rgba(0,0,0,.93); z-index:9999;
+      align-items:center; justify-content:center;
     }
-    .lightbox.active { display: flex; }
-    .lightbox img {
-      max-width: 90vw;
-      max-height: 85vh;
-      border-radius: 8px;
-      object-fit: contain;
+    .lightbox.active { display:flex; }
+    .lightbox img { max-width:90vw; max-height:86vh; border-radius:8px; object-fit:contain; }
+    .lb-close { position:absolute; top:20px; right:24px; color:#fff; font-size:2rem; cursor:pointer; background:none; border:none; line-height:1; }
+    .lb-prev, .lb-next {
+      position:absolute; top:50%; transform:translateY(-50%);
+      color:#fff; font-size:1.8rem;
+      background:rgba(255,255,255,.12); border:none;
+      width:50px; height:50px; border-radius:50%;
+      cursor:pointer; display:flex; align-items:center; justify-content:center;
+      transition:background .2s;
     }
-    .lightbox-close {
-      position: absolute;
-      top: 20px;
-      right: 24px;
-      color: #fff;
-      font-size: 2rem;
-      cursor: pointer;
-      background: none;
-      border: none;
-      line-height: 1;
-    }
-    .lightbox-prev,
-    .lightbox-next {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #fff;
-      font-size: 2rem;
-      background: rgba(255,255,255,0.15);
-      border: none;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
-    }
-    .lightbox-prev { left: 16px; }
-    .lightbox-next { right: 16px; }
-    .lightbox-prev:hover, .lightbox-next:hover { background: rgba(255,255,255,0.3); }
-
-    /* Video section */
-    .video-section {
-      background: var(--dark);
-      padding: 5rem 0;
-      text-align: center;
-    }
-    .video-section h2 {
-      font-family: 'Playfair Display', serif;
-      color: #fff;
-      font-size: 2rem;
-      margin-bottom: 2.5rem;
-    }
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .video-card {
-      background: rgba(255,255,255,0.05);
-      border-radius: 16px;
-      overflow: hidden;
-      aspect-ratio: 16/9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,0.4);
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.9rem;
-      flex-direction: column;
-      gap: 8px;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .video-card i { font-size: 2.5rem; color: var(--gold); }
+    .lb-prev { left:16px; } .lb-next { right:16px; }
+    .lb-prev:hover, .lb-next:hover { background:rgba(255,255,255,.25); }
 
     /* CTA */
-    .gallery-cta {
-      background: linear-gradient(135deg, var(--purple), #9b31e0);
-      padding: 5rem 0;
-      text-align: center;
-    }
-    .gallery-cta h2 {
-      font-family: 'Playfair Display', serif;
-      color: #fff;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    .gallery-cta p { color: rgba(255,255,255,0.85); margin-bottom: 2rem; }
-    .gallery-cta .btn-white {
-      background: #fff;
-      color: var(--purple);
-      padding: 14px 36px;
-      border-radius: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      font-family: 'Poppins', sans-serif;
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: inline-block;
-    }
-    .gallery-cta .btn-white:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-    }
+    .gallery-cta { background:linear-gradient(135deg,var(--purple),#9b31e0); padding:5rem 0; text-align:center; }
+    .gallery-cta h2 { font-family:'Playfair Display',serif; color:#fff; font-size:2rem; margin-bottom:1rem; }
+    .gallery-cta p { color:rgba(255,255,255,.85); margin-bottom:2rem; }
+    .btn-white { background:#fff; color:var(--purple); padding:14px 36px; border-radius:50px; font-weight:600; font-family:'Poppins',sans-serif; text-decoration:none; display:inline-block; transition:transform .2s, box-shadow .2s; }
+    .btn-white:hover { transform:translateY(-3px); box-shadow:0 12px 30px rgba(0,0,0,.2); }
   </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar" id="navbar">
-    <div class="container nav-inner">
-      <a href="index.html" class="nav-logo">
-        <img src="images/logo.png" alt="PDAA Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-        <div class="logo-fallback" style="display:none;">
-          <span class="logo-text">PDAA</span>
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo.png" alt="Pooja Dance & Art Academy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="logo-fallback" style="display:none;"><span class="logo-text">PDAA</span></div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="classes.html">Classes</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="contact.html" class="nav-cta">Enroll Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="container">
+    <h1>Our <em style="font-style:italic;color:var(--gold);">Gallery</em></h1>
+    <p>Click any album to explore photos from that category</p>
+  </div>
+</div>
+
+<!-- ALBUMS VIEW -->
+<section class="albums-section" id="albumsView">
+  <div class="container">
+    <div class="albums-grid">
+
+      <!-- DANCE -->
+      <div class="album-card" onclick="openAlbum('dance')">
+        <img class="album-cover" src="images/gallery-dance-1.JPG" alt="Dance" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="album-bg album-bg-dance" style="display:none;">🩰</div>
+        <div class="album-overlay">
+          <div class="album-name">Dance</div>
+          <div class="album-count"><i class="fas fa-images"></i> Classical · Bollywood · Contemporary</div>
         </div>
+        <div class="album-open-hint"><i class="fas fa-folder-open"></i> Open Album</div>
+      </div>
+
+      <!-- ART & DRAWING -->
+      <div class="album-card" onclick="openAlbum('art')">
+        <img class="album-cover" src="images/gallery-art-1.JPG" alt="Art" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="album-bg album-bg-art" style="display:none;">🎨</div>
+        <div class="album-overlay">
+          <div class="album-name">Art & Drawing</div>
+          <div class="album-count"><i class="fas fa-images"></i> Sketching · Painting · Student Work</div>
+        </div>
+        <div class="album-open-hint"><i class="fas fa-folder-open"></i> Open Album</div>
+      </div>
+
+      <!-- ANNUAL SHOWS -->
+      <div class="album-card" onclick="openAlbum('annual')">
+        <img class="album-cover" src="images/gallery-annual-1.JPG" alt="Annual Shows" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="album-bg album-bg-annual" style="display:none;">🎭</div>
+        <div class="album-overlay">
+          <div class="album-name">Annual Shows</div>
+          <div class="album-count"><i class="fas fa-images"></i> Stage · Costumes · Performances</div>
+        </div>
+        <div class="album-open-hint"><i class="fas fa-folder-open"></i> Open Album</div>
+      </div>
+
+      <!-- SINGING & MUSIC -->
+      <div class="album-card" onclick="openAlbum('singing')">
+        <img class="album-cover" src="images/gallery-music-1.JPG" alt="Singing" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="album-bg album-bg-singing" style="display:none;">🎤</div>
+        <div class="album-overlay">
+          <div class="album-name">Singing & Music</div>
+          <div class="album-count"><i class="fas fa-images"></i> Vocal · Keyboard · Performances</div>
+        </div>
+        <div class="album-open-hint"><i class="fas fa-folder-open"></i> Open Album</div>
+      </div>
+
+      <!-- FITNESS -->
+      <div class="album-card" onclick="openAlbum('fitness')">
+        <img class="album-cover" src="images/gallery-fitness-1.JPG" alt="Fitness" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="album-bg album-bg-fitness" style="display:none;">💪</div>
+        <div class="album-overlay">
+          <div class="album-name">Fitness & Zumba</div>
+          <div class="album-count"><i class="fas fa-images"></i> Zumba · Yoga · Aerobics</div>
+        </div>
+        <div class="album-open-hint"><i class="fas fa-folder-open"></i> Open Album</div>
+      </div>
+
+      <!-- WORKSHOPS -->
+      <div class="album-card" onclick="openAlbum('workshop')">
+        <img class="album-cover" src="images/gallery-workshop-1.JPG" alt="Workshops" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="album-bg album-bg-workshop" style="display:none;">✨</div>
+        <div class="album-overlay">
+          <div class="album-name">Workshops</div>
+          <div class="album-count"><i class="fas fa-images"></i> Summer · Special · Events</div>
+        </div>
+        <div class="album-open-hint"><i class="fas fa-folder-open"></i> Open Album</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ALBUM DETAIL VIEWS -->
+<section class="album-detail" id="detail-dance">
+  <div class="container">
+    <div class="detail-header">
+      <button class="back-btn" onclick="closeAlbum()"><i class="fas fa-arrow-left"></i> All Albums</button>
+      <div class="detail-title">🩰 Dance</div>
+    </div>
+    <div class="photos-grid">
+      <div class="photo-item" data-src="images/gallery-dance-1.JPG">
+        <img src="images/gallery-dance-1.JPG" alt="Dance 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder album-bg-dance"><i class="fas fa-camera"></i><span>Dance Photo 1</span></div>
+      </div>
+      <div class="photo-item" data-src="images/gallery-dance-2.JPG">
+        <img src="images/gallery-dance-2.JPG" alt="Dance 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder album-bg-dance"><i class="fas fa-camera"></i><span>Dance Photo 2</span></div>
+      </div>
+      <div class="photo-item" data-src="images/gallery-dance-3.JPG">
+        <img src="images/gallery-dance-3.JPG" alt="Dance 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder album-bg-dance"><i class="fas fa-camera"></i><span>Dance Photo 3</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="album-detail" id="detail-art">
+  <div class="container">
+    <div class="detail-header">
+      <button class="back-btn" onclick="closeAlbum()"><i class="fas fa-arrow-left"></i> All Albums</button>
+      <div class="detail-title">🎨 Art & Drawing</div>
+    </div>
+    <div class="photos-grid">
+      <div class="photo-item" data-src="images/gallery-art-1.JPG">
+        <img src="images/gallery-art-1.JPG" alt="Art 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder album-bg-art"><i class="fas fa-camera"></i><span>Art Photo 1</span></div>
+      </div>
+      <div class="photo-item" data-src="images/gallery-art-2.JPG">
+        <img src="images/gallery-art-2.JPG" alt="Art 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder album-bg-art"><i class="fas fa-camera"></i><span>Art Photo 2</span></div>
+      </div>
+      <div class="photo-item" data-src="images/gallery-art-3.JPG">
+        <img src="images/gallery-art-3.JPG" alt="Art 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder album-bg-art"><i class="fas fa-camera"></i><span>Art Photo 3</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="album-detail" id="detail-annual">
+  <div class="container">
+    <div class="detail-header">
+      <button class="back-btn" onclick="closeAlbum()"><i class="fas fa-arrow-left"></i> All Albums</button>
+      <div class="detail-title">🎭 Annual Shows</div>
+    </div>
+    <div class="photos-grid">
+      <div class="photo-item" data-src="images/gallery-annual-1.JPG">
+        <img src="images/gallery-annual-1.JPG" alt="Annual Show 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder album-bg-annual"><i class="fas fa-camera"></i><span>Annual Show 1</span></div>
+      </div>
+      <div class="photo-item" data-src="images/gallery-annual-2.JPG">
+        <img src="images/gallery-annual-2.JPG" alt="Annual Show 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder album-bg-annual"><i class="fas fa-camera"></i><span>Annual Show 2</span></div>
+      </div>
+      <div class="photo-item" data-src="images/gallery-annual-3.JPG">
+        <img src="images/gallery-annual-3.JPG" alt="Annual Show 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder album-bg-annual"><i class="fas fa-camera"></i><span>Annual Show 3</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="album-detail" id="detail-singing">
+  <div class="container">
+    <div class="detail-header">
+      <button class="back-btn" onclick="closeAlbum()"><i class="fas fa-arrow-left"></i> All Albums</button>
+      <div class="detail-title">🎤 Singing & Music</div>
+    </div>
+    <div class="photos-grid">
+      <div class="photo-item" data-src="images/gallery-music-1.JPG">
+        <img src="images/gallery-music-1.JPG" alt="Music 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder album-bg-singing"><i class="fas fa-camera"></i><span>Music Photo 1</span></div>
+      </div>
+      <div class="photo-item" data-src="images/gallery-music-2.JPG">
+        <img src="images/gallery-music-2.JPG" alt="Music 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder album-bg-singing"><i class="fas fa-camera"></i><span>Music Photo 2</span></div>
+      </div>
+      <div class="photo-item" data-src="images/gallery-music-3.JPG">
+        <img src="images/gallery-music-3.JPG" alt="Music 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder album-bg-singing"><i class="fas fa-camera"></i><span>Music Photo 3</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="album-detail" id="detail-fitness">
+  <div class="container">
+    <div class="detail-header">
+      <button class="back-btn" onclick="closeAlbum()"><i class="fas fa-arrow-left"></i> All Albums</button>
+      <div class="detail-title">💪 Fitness & Zumba</div>
+    </div>
+    <div class="photos-grid">
+      <div class="photo-item" data-src="images/gallery-fitness-1.JPG">
+        <img src="images/gallery-fitness-1.JPG" alt="Fitness 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder album-bg-fitness"><i class="fas fa-camera"></i><span>Fitness Photo 1</span></div>
+      </div>
+      <div class="photo-item" data-src="images/gallery-fitness-2.JPG">
+        <img src="images/gallery-fitness-2.JPG" alt="Fitness 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder album-bg-fitness"><i class="fas fa-camera"></i><span>Fitness Photo 2</span></div>
+      </div>
+      <div class="photo-item" data-src="images/gallery-fitness-3.JPG">
+        <img src="images/gallery-fitness-3.JPG" alt="Fitness 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder album-bg-fitness"><i class="fas fa-camera"></i><span>Fitness Photo 3</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="album-detail" id="detail-workshop">
+  <div class="container">
+    <div class="detail-header">
+      <button class="back-btn" onclick="closeAlbum()"><i class="fas fa-arrow-left"></i> All Albums</button>
+      <div class="detail-title">✨ Workshops</div>
+    </div>
+    <div class="photos-grid">
+      <div class="photo-item" data-src="images/gallery-workshop-1.JPG">
+        <img src="images/gallery-workshop-1.JPG" alt="Workshop 1" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder album-bg-workshop"><i class="fas fa-camera"></i><span>Workshop Photo 1</span></div>
+      </div>
+      <div class="photo-item" data-src="images/gallery-workshop-2.JPG">
+        <img src="images/gallery-workshop-2.JPG" alt="Workshop 2" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder album-bg-workshop"><i class="fas fa-camera"></i><span>Workshop Photo 2</span></div>
+      </div>
+      <div class="photo-item" data-src="images/gallery-workshop-3.JPG">
+        <img src="images/gallery-workshop-3.JPG" alt="Workshop 3" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder album-bg-workshop"><i class="fas fa-camera"></i><span>Workshop Photo 3</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="gallery-cta">
+  <div class="container">
+    <h2>Want to be in our next album?</h2>
+    <p>Enroll today and your child will perform on stage at our annual show</p>
+    <a href="contact.html" class="btn-white">Enroll Today →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo" style="margin-bottom:1rem;display:inline-flex;">
+        <img src="images/logo.png" alt="PDAA Logo" style="height:48px;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="logo-fallback" style="display:none;"><span class="logo-text">PDAA</span></div>
       </a>
-      <ul class="nav-links" id="navLinks">
+      <p>Nurturing creativity and artistic excellence in Nagpur since 2002. Where every child discovers their unique talent.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/poojadanceandartoffical_" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/share/1Cdw4PH6pj/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.youtube.com/channel/poojadanceartacademy" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://wa.me/919373235550" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="classes.html">Classes</a></li>
-        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="classes.html">Our Classes</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
         <li><a href="events.html">Events</a></li>
-        <li><a href="contact.html" class="nav-cta">Enroll Now</a></li>
+        <li><a href="contact.html">Contact & Enroll</a></li>
       </ul>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
     </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="gallery-hero">
-    <div class="container">
-      <h1>Our <em>Gallery</em></h1>
-      <p>Glimpses of creativity, joy, and excellence from our stages & studios</p>
+    <div class="footer-links">
+      <h4>Our Classes</h4>
+      <ul>
+        <li><a href="classes.html">Dance Classes</a></li>
+        <li><a href="classes.html">Fitness & Zumba</a></li>
+        <li><a href="classes.html">Drawing & Painting</a></li>
+        <li><a href="classes.html">Singing & Keyboard</a></li>
+        <li><a href="classes.html">Acting & Theatre</a></li>
+        <li><a href="classes.html">Event Management</a></li>
+      </ul>
     </div>
-  </section>
-
-  <!-- MAIN GALLERY -->
-  <section class="section">
-    <div class="container">
-      <div class="gallery-filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="dance">Dance</button>
-        <button class="filter-btn" data-filter="art">Art & Drawing</button>
-        <button class="filter-btn" data-filter="annual">Annual Shows</button>
-        <button class="filter-btn" data-filter="workshop">Workshops</button>
-      </div>
-
-      <div class="gallery-grid" id="galleryGrid">
-        <!-- DANCE (3 photos) -->
-        <div class="gallery-item" data-category="dance">
-          <img src="images/gallery-dance-1.JPG" alt="Dance performance" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="gallery-placeholder" style="height:260px;"><i class="fas fa-images"></i><span>Dance Performance</span></div>
-          <div class="overlay"><span>Dance · Performance</span></div>
-        </div>
-        <div class="gallery-item" data-category="dance">
-          <img src="images/gallery-dance-2.JPG" alt="Dance class" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="gallery-placeholder" style="height:320px;"><i class="fas fa-images"></i><span>Dance Class</span></div>
-          <div class="overlay"><span>Dance · Class</span></div>
-        </div>
-        <div class="gallery-item" data-category="dance">
-          <img src="images/gallery-dance-3.JPG" alt="Bharatnatyam" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="gallery-placeholder" style="height:220px;"><i class="fas fa-images"></i><span>Bharatnatyam</span></div>
-          <div class="overlay"><span>Dance · Bharatnatyam</span></div>
-        </div>
-        <!-- ART (3 photos) -->
-        <div class="gallery-item" data-category="art">
-          <img src="images/gallery-art-1.JPG" alt="Art class" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="gallery-placeholder" style="height:240px;"><i class="fas fa-images"></i><span>Art Class</span></div>
-          <div class="overlay"><span>Art · Student Work</span></div>
-        </div>
-        <div class="gallery-item" data-category="art">
-          <img src="images/gallery-art-2.JPG" alt="Painting session" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="gallery-placeholder" style="height:300px;"><i class="fas fa-images"></i><span>Painting Session</span></div>
-          <div class="overlay"><span>Art · Painting</span></div>
-        </div>
-        <div class="gallery-item" data-category="art">
-          <img src="images/gallery-art-3.JPG" alt="Drawing class" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="gallery-placeholder" style="height:260px;"><i class="fas fa-images"></i><span>Drawing Class</span></div>
-          <div class="overlay"><span>Art · Drawing</span></div>
-        </div>
-        <!-- ANNUAL SHOWS (3 photos) -->
-        <div class="gallery-item" data-category="annual">
-          <img src="images/gallery-annual-1.JPG" alt="Annual show" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="gallery-placeholder" style="height:280px;"><i class="fas fa-images"></i><span>Annual Show</span></div>
-          <div class="overlay"><span>Annual Show · Stage</span></div>
-        </div>
-        <div class="gallery-item" data-category="annual">
-          <img src="images/gallery-annual-2.JPG" alt="Annual show costumes" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="gallery-placeholder" style="height:320px;"><i class="fas fa-images"></i><span>Annual Show</span></div>
-          <div class="overlay"><span>Annual Show · Costumes</span></div>
-        </div>
-        <div class="gallery-item" data-category="annual">
-          <img src="images/gallery-annual-3.JPG" alt="Annual show group" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="gallery-placeholder" style="height:240px;"><i class="fas fa-images"></i><span>Annual Show</span></div>
-          <div class="overlay"><span>Annual Show · Group</span></div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- VIDEO SECTION -->
-  <section class="video-section">
-    <div class="container">
-      <h2>✨ Moments in Motion</h2>
-      <div class="video-grid">
-        <div class="video-card">
-          <i class="fas fa-play-circle"></i>
-          <span>Annual Show Highlights 2024</span>
-        </div>
-        <div class="video-card">
-          <i class="fas fa-play-circle"></i>
-          <span>Studio Sessions – Behind the Scenes</span>
-        </div>
-        <div class="video-card">
-          <i class="fas fa-play-circle"></i>
-          <span>Student Showcase – Batch 2023</span>
-        </div>
-      </div>
-      <p style="color:rgba(255,255,255,0.5);margin-top:2rem;font-size:0.9rem;">
-        Follow us on <a href="https://www.instagram.com/poojadanceartacademy" target="_blank" style="color:var(--gold);">Instagram</a> &amp;
-        <a href="https://www.youtube.com/channel/poojadanceartacademy" target="_blank" style="color:var(--gold);">YouTube</a> for more videos
+    <div class="footer-contact">
+      <h4>Contact Us</h4>
+      <p><i class="fas fa-map-marker-alt"></i> 1st Floor, Above Om Medical, Gokulpeth Market, Nagpur 440010</p>
+      <p><i class="fas fa-phone"></i> <a href="tel:+919373235550">+91 93732 35550</a></p>
+      <p><i class="fas fa-envelope"></i> <a href="mailto:poojadanceartacademyofficial@gmail.com">poojadanceartacademyofficial@gmail.com</a></p>
+      <p><i class="fas fa-clock"></i> Mon–Fri: 6AM–1PM & 4PM–9PM</p>
+      <p style="margin-top:1rem;">
+        <a href="https://maps.app.goo.gl/Hpb14Jan4dCLu5x76" target="_blank" style="background:var(--gold);color:#000;padding:8px 18px;border-radius:20px;text-decoration:none;font-size:.85rem;font-weight:600;display:inline-block;">
+          <i class="fas fa-directions"></i> Get Directions
+        </a>
       </p>
     </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="gallery-cta">
-    <div class="container">
-      <h2>Ready to be part of these moments?</h2>
-      <p>Join 25,000+ students who've trained at Pooja Dance & Art Academy</p>
-      <a href="contact.html" class="btn-white">Enroll Today →</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="nav-logo" style="margin-bottom:1rem;display:inline-flex;">
-          <img src="images/logo.png" alt="PDAA Logo" style="height:48px;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <div class="logo-fallback" style="display:none;"><span class="logo-text">PDAA</span></div>
-        </a>
-        <p>Nurturing creativity and artistic excellence in Nagpur since 2002. Where every child discovers their unique talent.</p>
-        <div class="social-links">
-          <a href="https://www.instagram.com/poojadanceartacademy" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.facebook.com/poojadanceartacademy" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.youtube.com/channel/poojadanceartacademy" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          <a href="https://wa.me/919373235550" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        </div>
-      </div>
-      <div class="footer-links">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="classes.html">Our Classes</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="contact.html">Contact & Enroll</a></li>
-        </ul>
-      </div>
-      <div class="footer-links">
-        <h4>Our Classes</h4>
-        <ul>
-          <li><a href="classes.html">Classical & Folk Dance</a></li>
-          <li><a href="classes.html">Bollywood & Freestyle</a></li>
-          <li><a href="classes.html">Drawing & Painting</a></li>
-          <li><a href="classes.html">Yoga & Fitness</a></li>
-          <li><a href="classes.html">Acting & Theatre</a></li>
-          <li><a href="classes.html">Singing & Instruments</a></li>
-        </ul>
-      </div>
-      <div class="footer-contact">
-        <h4>Contact Us</h4>
-        <p><i class="fas fa-map-marker-alt"></i> 1st Floor, Square Near Coffee House Square, Above Om Medical, Gokulpeth Market, Nagpur 440010</p>
-        <p><i class="fas fa-phone"></i> <a href="tel:+919373235550">+91 93732 35550</a></p>
-        <p><i class="fas fa-envelope"></i> <a href="mailto:poojadanceartacademyofficial@gmail.com">poojadanceartacademyofficial@gmail.com</a></p>
-        <p><i class="fas fa-clock"></i> Mon–Fri: 6AM–1PM & 4PM–9PM</p>
-        <p style="margin-top:1rem;">
-          <a href="https://maps.app.goo.gl/Hpb14Jan4dCLu5x76" target="_blank" class="btn-sm" style="background:var(--gold);color:#000;padding:8px 18px;border-radius:20px;text-decoration:none;font-size:0.85rem;font-weight:600;">
-            <i class="fas fa-directions"></i> Get Directions
-          </a>
-        </p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Pooja Dance & Art Academy, Nagpur. All rights reserved.</p>
-      <p style="font-size:0.8rem;opacity:0.6;margin-top:4px;">Est. 2002 · Gokulpeth, Nagpur · <a href="tel:+919373235550" style="color:inherit;">+91 93732 35550</a></p>
-    </div>
-  </footer>
-
-  <!-- WhatsApp Float -->
-  <a href="https://wa.me/919373235550?text=Hi%20PDAA!%20I%20saw%20your%20gallery%20and%20would%20like%20to%20know%20more%20about%20enrolling." class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lightboxClose">&times;</button>
-    <button class="lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
-    <img src="" alt="" id="lightboxImg">
-    <button class="lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
   </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Pooja Dance & Art Academy, Nagpur. All rights reserved.</p>
+    <p style="font-size:.8rem;opacity:.6;margin-top:4px;">Est. 2002 · Gokulpeth, Nagpur</p>
+  </div>
+</footer>
 
-  <script src="js/main.js"></script>
-  <script>
-    // Gallery filter
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        galleryItems.forEach(item => {
-          if (filter === 'all' || item.dataset.category === filter) {
-            item.style.display = 'block';
-          } else {
-            item.style.display = 'none';
-          }
-        });
-      });
-    });
+<a href="https://wa.me/919373235550?text=Hi%20PDAA!" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
 
-    // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    let currentIndex = 0;
-    const imgs = Array.from(document.querySelectorAll('.gallery-item img'));
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">&times;</button>
+  <button class="lb-prev" id="lbPrev"><i class="fas fa-chevron-left"></i></button>
+  <img src="" alt="" id="lbImg">
+  <button class="lb-next" id="lbNext"><i class="fas fa-chevron-right"></i></button>
+</div>
 
-    imgs.forEach((img, i) => {
-      img.parentElement.addEventListener('click', () => {
-        currentIndex = i;
-        lightboxImg.src = img.src;
-        lightbox.classList.add('active');
-      });
+<script src="js/main.js"></script>
+<script>
+  let currentAlbum = null;
+  let lbImages = [];
+  let lbIndex = 0;
+
+  function openAlbum(name) {
+    document.getElementById('albumsView').style.display = 'none';
+    document.querySelectorAll('.album-detail').forEach(d => d.classList.remove('active'));
+    document.getElementById('detail-' + name).classList.add('active');
+    currentAlbum = name;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    bindPhotoClicks();
+  }
+
+  function closeAlbum() {
+    document.querySelectorAll('.album-detail').forEach(d => d.classList.remove('active'));
+    document.getElementById('albumsView').style.display = '';
+    currentAlbum = null;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function bindPhotoClicks() {
+    const activeDetail = document.querySelector('.album-detail.active');
+    if (!activeDetail) return;
+    const items = activeDetail.querySelectorAll('.photo-item');
+    lbImages = Array.from(items).map(i => i.dataset.src);
+    items.forEach((item, idx) => {
+      item.onclick = () => openLightbox(idx);
     });
-    document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('active'));
-    document.getElementById('lightboxPrev').addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
-      lightboxImg.src = imgs[currentIndex].src;
-    });
-    document.getElementById('lightboxNext').addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % imgs.length;
-      lightboxImg.src = imgs[currentIndex].src;
-    });
-    lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('active'); });
-  </script>
+  }
+
+  function openLightbox(idx) {
+    lbIndex = idx;
+    document.getElementById('lbImg').src = lbImages[idx];
+    document.getElementById('lightbox').classList.add('active');
+  }
+  document.getElementById('lbClose').onclick = () => document.getElementById('lightbox').classList.remove('active');
+  document.getElementById('lbPrev').onclick = () => { lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length; document.getElementById('lbImg').src = lbImages[lbIndex]; };
+  document.getElementById('lbNext').onclick = () => { lbIndex = (lbIndex + 1) % lbImages.length; document.getElementById('lbImg').src = lbImages[lbIndex]; };
+  document.getElementById('lightbox').addEventListener('click', e => { if (e.target === document.getElementById('lightbox')) document.getElementById('lightbox').classList.remove('active'); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('active');
+    if (e.key === 'ArrowLeft') document.getElementById('lbPrev').click();
+    if (e.key === 'ArrowRight') document.getElementById('lbNext').click();
+  });
+</script>
 </body>
 </html>
