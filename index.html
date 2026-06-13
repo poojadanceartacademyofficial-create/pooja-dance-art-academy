@@ -123,6 +123,8 @@
       .hero-stat strong { font-size:1.4rem; }
       .life-icons { gap:10px; }
       .life-icon-btn { min-width:80px; padding:14px 12px; }
+      .hero { padding: 100px 0 60px; }
+      .hero-video-bg { object-position: center 20%; }
     }
   </style>
 </head>
@@ -152,6 +154,7 @@
 <!-- HERO -->
 <section class="hero">
   <video class="hero-video-bg" autoplay muted loop playsinline>
+    <source src="images/hero-video-mobile.mp4" media="(max-width: 600px)" type="video/mp4">
     <source src="images/hero-video.mp4" type="video/mp4">
   </video>
   <div class="container hero-content">
